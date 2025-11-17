@@ -1,0 +1,238 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const services = [
+  {
+    id: 'car-servicing',
+    title: 'Car Servicing',
+    href: '/car-servicing',
+    description: 'Full and interim servicing with manufacturer-compliant procedures and OE-quality parts.',
+    icon: `<svg viewBox="0 0 48 48" class="h-10 w-10" fill="currentColor"><path d="M18 4h12a4 4 0 0 1 4 4v8a4 4 0 0 1-4 4h-2v4h6a4 4 0 0 1 4 4v12h-8v-8h-4v8h-8V28a4 4 0 0 1 4-4h2v-4h-2a4 4 0 0 1-4-4V8a4 4 0 0 1 4-4Zm2 12v-4h8v4h-8Z"/></svg>`,
+  },
+  {
+    id: 'air-conditioning',
+    title: 'Air Conditioning',
+    href: '/air-conditioning',
+    description: 'Professional regas, leak detection, and system repairs using F-Gas certified equipment.',
+    icon: `<svg viewBox="0 0 48 48" class="h-10 w-10" fill="currentColor"><path d="M22 4v6.34l-4.24-4.24-2.83 2.83L21.17 16H15v4h6.17l-6.24 6.24 2.83 2.83L22 24.83V30h4v-5.17l4.24 4.24 2.83-2.83L26.83 20H33v-4h-6.17l6.24-6.24-2.83-2.83L26 10.34V4h-4Z"/></svg>`,
+  },
+  {
+    id: 'diagnostics',
+    title: 'Engine Diagnostics',
+    href: '/diagnostics',
+    description: 'Dealer-level fault detection with advanced diagnostic tools and live data analysis.',
+    icon: `<svg viewBox="0 0 48 48" class="h-10 w-10" fill="currentColor"><path d="M16 4a4 4 0 0 0-4 4v6H8a4 4 0 0 0-4 4v6h8v-4h24v4h8v-6a4 4 0 0 0-4-4h-4V8a4 4 0 0 0-4-4H16Zm4 28v12h8V32h-8Zm-8 0a4 4 0 0 0-4 4v8h8v-8a4 4 0 0 0-4-4Zm24 0a4 4 0 0 0-4 4v8h8v-8a4 4 0 0 0-4-4Z"/></svg>`,
+  },
+  {
+    id: 'brake-repair',
+    title: 'Brake Systems',
+    href: '/brake-repair',
+    description: 'Complete brake services including pads, discs, hydraulics, and safety inspections.',
+    icon: `<svg viewBox="0 0 48 48" class="h-10 w-10" fill="currentColor"><path d="M24 4a20 20 0 1 0 0 40 20 20 0 0 0 0-40Zm0 8a12 12 0 1 1-12 12h6a6 6 0 1 0 6-6V12Z"/></svg>`,
+  },
+  {
+    id: 'suspension',
+    title: 'Suspension & Alignment',
+    href: '/services#suspension',
+    description: 'Four-wheel alignment, geometry setup, and suspension component replacement.',
+    icon: `<svg viewBox="0 0 48 48" class="h-10 w-10" fill="currentColor"><path d="M14 6a4 4 0 0 1 4 4v6.34l13.17-13.17 2.83 2.83L21.66 19H30a4 4 0 0 1 0 8h-8v10a4 4 0 0 1-8 0V25.66L8.34 30 5.5 27.17 14 18.66V10a4 4 0 0 1 4-4Z"/></svg>`,
+  },
+  {
+    id: 'steering',
+    title: 'Steering Systems',
+    href: '/services#steering',
+    description: 'Power steering repairs, rack and pinion servicing, and precision alignment.',
+    icon: `<svg viewBox="0 0 48 48" class="h-10 w-10" fill="currentColor"><path d="M24 4a20 20 0 1 0 0 40 20 20 0 0 0 0-40Zm0 6a14 14 0 0 1 13.66 11H34a2 2 0 0 0-2 2v1a4 4 0 0 1-4 4h-8a4 4 0 0 1-4-4v-1a2 2 0 0 0-2-2H10.34A14 14 0 0 1 24 10Zm0 28a14 14 0 0 1-13.66-11H16a6 6 0 0 0 6 6h4a6 6 0 0 0 6-6h5.66A14 14 0 0 1 24 38Z"/></svg>`,
+  },
+  {
+    id: 'batteries',
+    title: 'Battery Services',
+    href: '/services#batteries',
+    description: 'Battery testing, supply, fitting, and coding for all vehicle types.',
+    icon: `<svg viewBox="0 0 48 48" class="h-10 w-10" fill="currentColor"><path d="M8 10a4 4 0 0 0-4 4v16a4 4 0 0 0 4 4h32a4 4 0 0 0 4-4V14a4 4 0 0 0-4-4h-4V8a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2H18V8a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2H8Zm6 8h4v4h-4v-4Zm10 0h4v4h-4v-4Zm10 0h4v4h-4v-4Z"/></svg>`,
+  },
+  {
+    id: 'clutch',
+    title: 'Clutch Replacement',
+    href: '/clutch-replacement',
+    description: 'Expert clutch replacement with hydraulic bleeding and precise adjustment.',
+    icon: `<svg viewBox="0 0 48 48" class="h-10 w-10" fill="currentColor"><path d="M24 4a20 20 0 1 0 0 40 20 20 0 0 0 0-40Zm0 6a14 14 0 0 1 12.62 21H27a3 3 0 0 1-3-3v-6a3 3 0 0 1 3-3h9.62A14 14 0 0 1 24 10Zm-3 12v6a3 3 0 0 1-3 3H7.38A14 14 0 0 1 21 10v9Z"/></svg>`,
+  },
+  {
+    id: 'cambelt',
+    title: 'Cambelt Replacement',
+    href: '/cambelt-replacement',
+    description: 'Timing belt and tensioner replacement to manufacturer schedules.',
+    icon: `<svg viewBox="0 0 48 48" class="h-10 w-10" fill="currentColor"><path d="M24 4a8 8 0 1 1 0 16 8 8 0 0 1 0-16Zm0 22a14 14 0 0 0-14 14v4a4 4 0 0 0 4 4h20a4 4 0 0 0 4-4v-4a14 14 0 0 0-14-14Z"/></svg>`,
+  },
+  {
+    id: 'engine-rebuilds',
+    title: 'Engine Rebuilds',
+    href: '/services#engine-rebuilds',
+    description: 'Component replacement and full engine overhauls with trusted partners.',
+    icon: `<svg viewBox="0 0 48 48" class="h-10 w-10" fill="currentColor"><path d="M18 6h12a4 4 0 0 1 4 4v12a4 4 0 0 1-4 4h-2v6h4a4 4 0 0 1 4 4v6h-8v-6h-4v6h-8v-6a4 4 0 0 1 4-4h4v-6h-2a4 4 0 0 1-4-4V10a4 4 0 0 1 4-4Zm2 8v6a2 2 0 0 0 2 2h4a2 2 0 0 0 2-2v-6a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2Z"/></svg>`,
+  },
+  {
+    id: 'exhaust',
+    title: 'Exhaust Systems',
+    href: '/services#exhaust',
+    description: 'Exhaust repairs, DPF servicing, and emissions compliance testing.',
+    icon: `<svg viewBox="0 0 48 48" class="h-10 w-10" fill="currentColor"><path d="M6 24a6 6 0 0 1 6-6h10l4-6h10a6 6 0 0 1 6 6v6h-6v8a6 6 0 0 1-6 6H20l-4-6h-4a6 6 0 0 1-6-6Z"/></svg>`,
+  },
+  {
+    id: 'fluids',
+    title: 'Oil & Fluids',
+    href: '/services#fluids',
+    description: 'Complete fluid maintenance including oil, coolant, and brake fluid services.',
+    icon: `<svg viewBox="0 0 48 48" class="h-10 w-10" fill="currentColor"><path d="M20 4h8a4 4 0 0 1 4 4v4h4a4 4 0 0 1 4 4v24H12V16a4 4 0 0 1 4-4h4V8a4 4 0 0 1 4-4Zm0 18a4 4 0 1 0 0 8h8a4 4 0 1 0 0-8h-8Z"/></svg>`,
+  },
+  {
+    id: 'general-repairs',
+    title: 'General Repairs',
+    href: '/services#general-repairs',
+    description: 'Comprehensive repair solutions for cars and light commercial vehicles.',
+    icon: `<svg viewBox="0 0 48 48" class="h-10 w-10" fill="currentColor"><path d="M20 6a6 6 0 0 1 11.66-2h6.34v6.34a6 6 0 0 1-2 11.66L30 28.34V36h6v8H12v-8h6v-5.66L12.66 24a6 6 0 0 1-2-11.66V6h6.34A6 6 0 0 1 20 6Z"/></svg>`,
+  },
+];
+
+const benefits = [
+  'Transparent pricing with detailed quotes',
+  'OE-quality parts with warranty protection',
+  'Manufacturer-compliant service procedures',
+  'Experienced technicians you can talk to directly',
+  'Modern diagnostic equipment and tools',
+  'Comfortable waiting area with WiFi',
+];
+---
+
+<BaseLayout
+  title="Car Services Kettering | Servicing, Repairs, Diagnostics | A1 Service Expert"
+  description="Comprehensive car services in Kettering: servicing, diagnostics, brakes, air conditioning, clutch, cambelt replacement & more. Expert mechanics, honest prices. Call 07394 433889."
+>
+  <div class="space-y-16">
+    <!-- Hero Section -->
+    <section
+      class="relative overflow-hidden rounded-3xl text-white shadow-xl"
+      style="background-image: url(/images/services-feature.png); background-size: cover; background-position: center;"
+    >
+      <div class="absolute inset-0 bg-slate-950/80"></div>
+      <div class="relative space-y-6 p-8 sm:p-14">
+        <p class="text-sm font-semibold uppercase tracking-[0.4em] text-brand-orange">Our Services</p>
+        <h1 class="text-4xl font-semibold sm:text-5xl">Comprehensive Car Services in Kettering</h1>
+        <p class="max-w-3xl text-base text-slate-200">
+          From routine servicing to complex diagnostics and repairs, A1 Service Expert provides dealer-level expertise at independent garage prices. Our experienced technicians use modern equipment and manufacturer-compliant procedures to keep your vehicle running at its best.
+        </p>
+        <div class="flex flex-col gap-3 sm:flex-row">
+          <a
+            href="tel:07394433889"
+            class="inline-flex items-center justify-center gap-2 rounded-full bg-brand-orange px-6 py-3 text-sm font-semibold text-slate-900 transition hover:-translate-y-0.5 hover:bg-orange-400"
+          >
+            <svg viewBox="0 0 24 24" class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M3 5a2 2 0 0 1 2-2h2.28a2 2 0 0 1 1.94 1.515l.74 2.964a2 2 0 0 1-.97 2.26l-1.21.726a11 11 0 0 0 5.1 5.1l.73-1.21a2 2 0 0 1 2.26-.97l2.96.74A2 2 0 0 1 21 18.72V21a2 2 0 0 1-2 2h-1c-8.284 0-15-6.716-15-15V5Z" />
+            </svg>
+            Call for a Quote
+          </a>
+          <a
+            href="/contact"
+            class="inline-flex items-center justify-center rounded-full border border-white/40 px-6 py-3 text-sm font-semibold text-white transition hover:-translate-y-0.5 hover:bg-white/10"
+          >
+            Contact Us
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Services Grid -->
+    <section>
+      <div class="mb-8 text-center">
+        <h2 class="text-3xl font-semibold text-brand-black">All Services We Offer</h2>
+        <p class="mt-3 text-base text-slate-600">
+          Expert care for every system in your vehicle
+        </p>
+      </div>
+
+      <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+        {services.map((service) => (
+          <a
+            href={service.href}
+            id={service.id}
+            class="group flex flex-col rounded-3xl border border-slate-200 bg-white p-6 shadow-sm transition-all duration-200 hover:-translate-y-2 hover:border-brand-orange hover:shadow-xl"
+          >
+            <span
+              class="inline-flex h-16 w-16 items-center justify-center rounded-full bg-brand-orange/10 text-brand-orange transition-all duration-200 group-hover:bg-brand-orange group-hover:text-white group-hover:shadow-lg"
+              set:html={service.icon}
+            />
+            <h3 class="mt-4 text-xl font-semibold text-brand-black transition-colors duration-200 group-hover:text-brand-orange">
+              {service.title}
+            </h3>
+            <p class="mt-2 flex-1 text-sm leading-relaxed text-slate-600">
+              {service.description}
+            </p>
+            <span class="mt-4 inline-flex items-center text-sm font-semibold text-brand-orange">
+              Learn more
+              <svg class="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14m-6-6 6 6-6 6" />
+              </svg>
+            </span>
+          </a>
+        ))}
+      </div>
+    </section>
+
+    <!-- Why Choose Us -->
+    <section class="rounded-3xl bg-slate-900 p-8 text-white shadow-xl sm:p-12">
+      <div class="mx-auto max-w-4xl">
+        <div class="text-center">
+          <h2 class="text-3xl font-semibold">Why Choose A1 Service Expert?</h2>
+          <p class="mt-3 text-base text-slate-200">
+            Quality workmanship, honest advice, and transparent service
+          </p>
+        </div>
+        <ul class="mt-10 grid gap-4 sm:grid-cols-2">
+          {benefits.map((benefit) => (
+            <li class="flex items-start gap-3 rounded-2xl border border-white/10 bg-white/5 p-4 backdrop-blur">
+              <span class="mt-1 inline-flex h-6 w-6 flex-shrink-0 items-center justify-center rounded-full bg-brand-orange text-white">
+                <svg viewBox="0 0 20 20" class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="2.5">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M6 10l3 3 5-6" />
+                </svg>
+              </span>
+              <span class="text-sm leading-relaxed text-slate-200">{benefit}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="rounded-3xl bg-gradient-to-br from-brand-orange to-orange-500 p-8 text-white shadow-xl sm:p-12">
+      <div class="mx-auto max-w-3xl text-center">
+        <h2 class="text-3xl font-semibold">Ready to Service Your Vehicle?</h2>
+        <p class="mt-4 text-lg leading-relaxed text-white/90">
+          Get in touch with our team for expert advice and transparent quotes. We're here to help keep your vehicle running smoothly.
+        </p>
+        <div class="mt-8 flex flex-col gap-4 sm:flex-row sm:justify-center">
+          <a
+            href="tel:07394433889"
+            class="inline-flex items-center justify-center gap-2 rounded-full bg-white px-6 py-3 text-sm font-semibold text-brand-orange transition hover:-translate-y-0.5 hover:shadow-lg"
+          >
+            <svg viewBox="0 0 24 24" class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M3 5a2 2 0 0 1 2-2h2.28a2 2 0 0 1 1.94 1.515l.74 2.964a2 2 0 0 1-.97 2.26l-1.21.726a11 11 0 0 0 5.1 5.1l.73-1.21a2 2 0 0 1 2.26-.97l2.96.74A2 2 0 0 1 21 18.72V21a2 2 0 0 1-2 2h-1c-8.284 0-15-6.716-15-15V5Z" />
+            </svg>
+            Call 07394 433889
+          </a>
+          <a
+            href="https://wa.me/447394433889"
+            target="_blank"
+            rel="noreferrer"
+            class="inline-flex items-center justify-center gap-2 rounded-full border-2 border-white px-6 py-3 text-sm font-semibold text-white transition hover:-translate-y-0.5 hover:bg-white hover:text-brand-orange"
+          >
+            <svg viewBox="0 0 24 24" class="h-5 w-5" fill="currentColor">
+              <path d="M20.52 3.48A11.94 11.94 0 0 0 12.06 0C5.47 0 .1 5.37.1 12c0 2.12.56 4.14 1.62 5.94L0 24l6.2-1.6A11.86 11.86 0 0 0 12.06 24c6.58 0 11.94-5.37 11.94-12 0-3.2-1.25-6.2-3.48-8.52Zm-8.46 18.5c-1.86 0-3.63-.5-5.2-1.47l-.37-.22-3.68.95.98-3.58-.24-.37A9.65 9.65 0 0 1 2.3 12c0-5.38 4.38-9.76 9.76-9.76 2.6 0 5.06 1 6.9 2.83a9.66 9.66 0 0 1 2.86 6.93c0 5.38-4.38 9.76-9.76 9.76Zm5.63-7.3c-.3-.15-1.78-.88-2.06-.98-.28-.1-.49-.15-.7.15-.2.3-.8.98-.98 1.18-.2.2-.36.23-.66.08-.3-.15-1.25-.46-2.38-1.46-.88-.78-1.48-1.74-1.66-2.04-.18-.3 0-.47.14-.62.14-.14.3-.36.46-.54.15-.18.2-.3.3-.5.1-.2.05-.38-.03-.54-.08-.15-.7-1.68-.96-2.3-.25-.6-.5-.5-.7-.51h-.6c-.2 0-.54.07-.82.38-.28.3-1.08 1.06-1.08 2.58 0 1.5 1.1 2.94 1.26 3.14.15.2 2.12 3.24 5.14 4.54.72.3 1.28.48 1.72.62.72.23 1.38.2 1.9.12.58-.08 1.78-.72 2.03-1.4.26-.7.26-1.3.2-1.4-.08-.12-.28-.2-.58-.35Z"/>
+            </svg>
+            WhatsApp Us
+          </a>
+        </div>
+      </div>
+    </section>
+  </div>
+</BaseLayout>
