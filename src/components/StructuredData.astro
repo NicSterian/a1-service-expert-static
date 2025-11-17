@@ -1,0 +1,93 @@
+---
+const structuredData = {
+  "@context": "https://schema.org",
+  "@type": "AutomotiveBusiness",
+  "name": "A1 Service Expert",
+  "image": "https://a1serviceexpert.com/images/logo.webp",
+  "description": "Independent car service and repair garage in Kettering, Northamptonshire. Expert servicing, diagnostics, brakes, air conditioning, and general repairs.",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "11 Cunliffe Dr",
+    "addressLocality": "Kettering",
+    "addressRegion": "Northamptonshire",
+    "postalCode": "NN16 8LD",
+    "addressCountry": "GB"
+  },
+  "telephone": "+447394433889",
+  "email": "support@a1serviceexpert.com",
+  "url": "https://a1serviceexpert.com",
+  "priceRange": "££",
+  "openingHoursSpecification": [
+    {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+      "opens": "09:00",
+      "closes": "18:00"
+    },
+    {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": "Saturday",
+      "opens": "09:00",
+      "closes": "14:30"
+    }
+  ],
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": "52.40985247201358",
+    "longitude": "-0.717838823409184"
+  },
+  "sameAs": [
+    "https://www.facebook.com/p/A1-Service-Expert-61559306016998/",
+    "https://www.instagram.com/a1service.expert/"
+  ],
+  "areaServed": {
+    "@type": "GeoCircle",
+    "geoMidpoint": {
+      "@type": "GeoCoordinates",
+      "latitude": "52.40985247201358",
+      "longitude": "-0.717838823409184"
+    },
+    "geoRadius": "25000"
+  },
+  "hasOfferCatalog": {
+    "@type": "OfferCatalog",
+    "name": "Automotive Services",
+    "itemListElement": [
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Car Servicing",
+          "description": "Full and interim car servicing with manufacturer-compliant procedures"
+        }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Engine Diagnostics",
+          "description": "Dealer-level diagnostics with advanced fault detection"
+        }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Air Conditioning",
+          "description": "Air conditioning regas, leak detection, and system repairs"
+        }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Brake Repair",
+          "description": "Brake pads, discs, and hydraulic system repairs"
+        }
+      }
+    ]
+  }
+};
+---
+
+<script type="application/ld+json" set:html={JSON.stringify(structuredData)} />

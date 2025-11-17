@@ -1,0 +1,262 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const openingHours = [
+  { day: 'Monday', time: '09:00 - 18:00' },
+  { day: 'Tuesday', time: '09:00 - 18:00' },
+  { day: 'Wednesday', time: '09:00 - 18:00' },
+  { day: 'Thursday', time: '09:00 - 18:00' },
+  { day: 'Friday', time: '09:00 - 18:00' },
+  { day: 'Saturday', time: '09:00 - 14:30' },
+  { day: 'Sunday', time: 'Closed' },
+];
+---
+
+<BaseLayout
+  title="Contact A1 Service Expert | Car Garage Kettering | Get a Quote"
+  description="Contact A1 Service Expert in Kettering for car servicing and repairs. Call 07394 433889, WhatsApp, or use our contact form. Open Mon-Fri 9am-6pm, Sat 9am-2:30pm."
+>
+  <div class="space-y-12">
+    <!-- Hero Section -->
+    <section class="rounded-3xl bg-gradient-to-br from-slate-900 to-slate-800 p-8 text-white shadow-xl sm:p-12">
+      <div class="mx-auto max-w-3xl text-center">
+        <p class="text-sm font-semibold uppercase tracking-[0.4em] text-brand-orange">Get in Touch</p>
+        <h1 class="mt-2 text-4xl font-semibold sm:text-5xl">Contact Our Kettering Workshop</h1>
+        <p class="mt-4 text-base text-slate-200">
+          Need expert advice or want to book your vehicle in? We're here to help. Call us, send a WhatsApp message, or fill in the form below and we'll get back to you promptly.
+        </p>
+      </div>
+    </section>
+
+    <!-- Contact Methods & Form -->
+    <div class="grid gap-8 lg:grid-cols-2">
+      <!-- Contact Information -->
+      <div class="space-y-6">
+        <div class="rounded-3xl border border-slate-200 bg-white p-8 shadow-sm">
+          <h2 class="text-2xl font-semibold text-brand-black">Contact Details</h2>
+          <div class="mt-6 space-y-6">
+            <!-- Phone -->
+            <div class="flex items-start gap-4">
+              <span class="mt-1 flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full bg-brand-orange/10 text-brand-orange">
+                <svg viewBox="0 0 24 24" class="h-6 w-6" fill="none" stroke="currentColor" stroke-width="2">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M3 5a2 2 0 0 1 2-2h2.28a2 2 0 0 1 1.94 1.515l.74 2.964a2 2 0 0 1-.97 2.26l-1.21.726a11 11 0 0 0 5.1 5.1l.73-1.21a2 2 0 0 1 2.26-.97l2.96.74A2 2 0 0 1 21 18.72V21a2 2 0 0 1-2 2h-1c-8.284 0-15-6.716-15-15V5Z" />
+                </svg>
+              </span>
+              <div class="flex-1">
+                <p class="text-sm font-semibold text-slate-900">Phone</p>
+                <a href="tel:07394433889" class="mt-1 text-lg font-semibold text-brand-orange hover:underline">
+                  07394 433889
+                </a>
+                <p class="mt-1 text-sm text-slate-600">Give us a call for immediate assistance</p>
+              </div>
+            </div>
+
+            <!-- WhatsApp -->
+            <div class="flex items-start gap-4">
+              <span class="mt-1 flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full bg-brand-orange/10 text-brand-orange">
+                <svg viewBox="0 0 24 24" class="h-6 w-6" fill="currentColor">
+                  <path d="M20.52 3.48A11.94 11.94 0 0 0 12.06 0C5.47 0 .1 5.37.1 12c0 2.12.56 4.14 1.62 5.94L0 24l6.2-1.6A11.86 11.86 0 0 0 12.06 24c6.58 0 11.94-5.37 11.94-12 0-3.2-1.25-6.2-3.48-8.52Zm-8.46 18.5c-1.86 0-3.63-.5-5.2-1.47l-.37-.22-3.68.95.98-3.58-.24-.37A9.65 9.65 0 0 1 2.3 12c0-5.38 4.38-9.76 9.76-9.76 2.6 0 5.06 1 6.9 2.83a9.66 9.66 0 0 1 2.86 6.93c0 5.38-4.38 9.76-9.76 9.76Zm5.63-7.3c-.3-.15-1.78-.88-2.06-.98-.28-.1-.49-.15-.7.15-.2.3-.8.98-.98 1.18-.2.2-.36.23-.66.08-.3-.15-1.25-.46-2.38-1.46-.88-.78-1.48-1.74-1.66-2.04-.18-.3 0-.47.14-.62.14-.14.3-.36.46-.54.15-.18.2-.3.3-.5.1-.2.05-.38-.03-.54-.08-.15-.7-1.68-.96-2.3-.25-.6-.5-.5-.7-.51h-.6c-.2 0-.54.07-.82.38-.28.3-1.08 1.06-1.08 2.58 0 1.5 1.1 2.94 1.26 3.14.15.2 2.12 3.24 5.14 4.54.72.3 1.28.48 1.72.62.72.23 1.38.2 1.9.12.58-.08 1.78-.72 2.03-1.4.26-.7.26-1.3.2-1.4-.08-.12-.28-.2-.58-.35Z"/>
+                </svg>
+              </span>
+              <div class="flex-1">
+                <p class="text-sm font-semibold text-slate-900">WhatsApp</p>
+                <a href="https://wa.me/447394433889" target="_blank" rel="noreferrer" class="mt-1 text-lg font-semibold text-brand-orange hover:underline">
+                  Message Us
+                </a>
+                <p class="mt-1 text-sm text-slate-600">Quick and convenient messaging</p>
+              </div>
+            </div>
+
+            <!-- Email -->
+            <div class="flex items-start gap-4">
+              <span class="mt-1 flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full bg-brand-orange/10 text-brand-orange">
+                <svg viewBox="0 0 24 24" class="h-6 w-6" fill="none" stroke="currentColor" stroke-width="2">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M3 7h18M5 7l5.5 4.5a3 3 0 0 0 4 0L20 7M5 7v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7" />
+                </svg>
+              </span>
+              <div class="flex-1">
+                <p class="text-sm font-semibold text-slate-900">Email</p>
+                <a href="mailto:support@a1serviceexpert.com" class="mt-1 text-lg font-semibold text-brand-orange hover:underline">
+                  support@a1serviceexpert.com
+                </a>
+                <p class="mt-1 text-sm text-slate-600">Send us your enquiry anytime</p>
+              </div>
+            </div>
+
+            <!-- Address -->
+            <div class="flex items-start gap-4">
+              <span class="mt-1 flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full bg-brand-orange/10 text-brand-orange">
+                <svg viewBox="0 0 24 24" class="h-6 w-6" fill="none" stroke="currentColor" stroke-width="2">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M12 21s-6-5.686-6-10A6 6 0 0 1 18 11c0 4.314-6 10-6 10Zm0-9a2 2 0 1 0 0-4 2 2 0 0 0 0 4Z" />
+                </svg>
+              </span>
+              <div class="flex-1">
+                <p class="text-sm font-semibold text-slate-900">Workshop Address</p>
+                <address class="mt-1 not-italic">
+                  <p class="text-base text-slate-700">11 Cunliffe Dr</p>
+                  <p class="text-base text-slate-700">Kettering</p>
+                  <p class="text-base text-slate-700">Northamptonshire</p>
+                  <p class="text-base font-semibold text-brand-orange">NN16 8LD</p>
+                </address>
+              </div>
+            </div>
+          </div>
+
+          <!-- Quick Action Buttons -->
+          <div class="mt-8 flex flex-col gap-3">
+            <a href="tel:07394433889" class="btn-primary justify-center">
+              <svg viewBox="0 0 24 24" class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M3 5a2 2 0 0 1 2-2h2.28a2 2 0 0 1 1.94 1.515l.74 2.964a2 2 0 0 1-.97 2.26l-1.21.726a11 11 0 0 0 5.1 5.1l.73-1.21a2 2 0 0 1 2.26-.97l2.96.74A2 2 0 0 1 21 18.72V21a2 2 0 0 1-2 2h-1c-8.284 0-15-6.716-15-15V5Z" />
+              </svg>
+              Call 07394 433889
+            </a>
+            <a href="https://wa.me/447394433889" target="_blank" rel="noreferrer" class="btn-secondary justify-center">
+              <svg viewBox="0 0 24 24" class="h-5 w-5" fill="currentColor">
+                <path d="M20.52 3.48A11.94 11.94 0 0 0 12.06 0C5.47 0 .1 5.37.1 12c0 2.12.56 4.14 1.62 5.94L0 24l6.2-1.6A11.86 11.86 0 0 0 12.06 24c6.58 0 11.94-5.37 11.94-12 0-3.2-1.25-6.2-3.48-8.52Zm-8.46 18.5c-1.86 0-3.63-.5-5.2-1.47l-.37-.22-3.68.95.98-3.58-.24-.37A9.65 9.65 0 0 1 2.3 12c0-5.38 4.38-9.76 9.76-9.76 2.6 0 5.06 1 6.9 2.83a9.66 9.66 0 0 1 2.86 6.93c0 5.38-4.38 9.76-9.76 9.76Zm5.63-7.3c-.3-.15-1.78-.88-2.06-.98-.28-.1-.49-.15-.7.15-.2.3-.8.98-.98 1.18-.2.2-.36.23-.66.08-.3-.15-1.25-.46-2.38-1.46-.88-.78-1.48-1.74-1.66-2.04-.18-.3 0-.47.14-.62.14-.14.3-.36.46-.54.15-.18.2-.3.3-.5.1-.2.05-.38-.03-.54-.08-.15-.7-1.68-.96-2.3-.25-.6-.5-.5-.7-.51h-.6c-.2 0-.54.07-.82.38-.28.3-1.08 1.06-1.08 2.58 0 1.5 1.1 2.94 1.26 3.14.15.2 2.12 3.24 5.14 4.54.72.3 1.28.48 1.72.62.72.23 1.38.2 1.9.12.58-.08 1.78-.72 2.03-1.4.26-.7.26-1.3.2-1.4-.08-.12-.28-.2-.58-.35Z"/>
+              </svg>
+              WhatsApp Us
+            </a>
+          </div>
+        </div>
+
+        <!-- Opening Hours -->
+        <div class="rounded-3xl border border-slate-200 bg-white p-8 shadow-sm">
+          <h2 class="text-2xl font-semibold text-brand-black">Opening Hours</h2>
+          <ul class="mt-6 space-y-3">
+            {openingHours.map((entry) => (
+              <li class="flex items-center justify-between rounded-lg border border-slate-200 bg-slate-50 px-4 py-3">
+                <span class="font-medium text-slate-700">{entry.day}</span>
+                <span class="font-semibold text-brand-orange">{entry.time}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
+
+      <!-- Contact Form -->
+      <div class="rounded-3xl border border-slate-200 bg-white p-8 shadow-sm">
+        <h2 class="text-2xl font-semibold text-brand-black">Send Us a Message</h2>
+        <p class="mt-2 text-sm text-slate-600">
+          Fill in the form below and we'll get back to you as soon as possible.
+        </p>
+
+        <form
+          name="contact"
+          method="POST"
+          data-netlify="true"
+          netlify-honeypot="bot-field"
+          class="mt-6 space-y-6"
+        >
+          <!-- Hidden fields for Netlify -->
+          <input type="hidden" name="form-name" value="contact" />
+          <div class="hidden">
+            <label>
+              Don't fill this out if you're human: <input name="bot-field" />
+            </label>
+          </div>
+
+          <!-- Name -->
+          <div>
+            <label for="name" class="block text-sm font-semibold text-slate-900">
+              Full Name <span class="text-red-500">*</span>
+            </label>
+            <input
+              type="text"
+              id="name"
+              name="name"
+              required
+              class="mt-2 w-full rounded-lg border border-slate-300 px-4 py-3 text-base text-slate-900 placeholder-slate-400 transition focus:border-brand-orange focus:outline-none focus:ring-2 focus:ring-brand-orange/20"
+              placeholder="Your name"
+            />
+          </div>
+
+          <!-- Email -->
+          <div>
+            <label for="email" class="block text-sm font-semibold text-slate-900">
+              Email Address <span class="text-red-500">*</span>
+            </label>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              required
+              class="mt-2 w-full rounded-lg border border-slate-300 px-4 py-3 text-base text-slate-900 placeholder-slate-400 transition focus:border-brand-orange focus:outline-none focus:ring-2 focus:ring-brand-orange/20"
+              placeholder="your@email.com"
+            />
+          </div>
+
+          <!-- Phone -->
+          <div>
+            <label for="phone" class="block text-sm font-semibold text-slate-900">
+              Phone Number
+            </label>
+            <input
+              type="tel"
+              id="phone"
+              name="phone"
+              class="mt-2 w-full rounded-lg border border-slate-300 px-4 py-3 text-base text-slate-900 placeholder-slate-400 transition focus:border-brand-orange focus:outline-none focus:ring-2 focus:ring-brand-orange/20"
+              placeholder="07394 433889"
+            />
+          </div>
+
+          <!-- Vehicle Registration (optional) -->
+          <div>
+            <label for="registration" class="block text-sm font-semibold text-slate-900">
+              Vehicle Registration
+            </label>
+            <input
+              type="text"
+              id="registration"
+              name="registration"
+              class="mt-2 w-full rounded-lg border border-slate-300 px-4 py-3 text-base text-slate-900 placeholder-slate-400 transition focus:border-brand-orange focus:outline-none focus:ring-2 focus:ring-brand-orange/20"
+              placeholder="e.g. AB12 CDE"
+            />
+          </div>
+
+          <!-- Message -->
+          <div>
+            <label for="message" class="block text-sm font-semibold text-slate-900">
+              Message <span class="text-red-500">*</span>
+            </label>
+            <textarea
+              id="message"
+              name="message"
+              required
+              rows="5"
+              class="mt-2 w-full rounded-lg border border-slate-300 px-4 py-3 text-base text-slate-900 placeholder-slate-400 transition focus:border-brand-orange focus:outline-none focus:ring-2 focus:ring-brand-orange/20"
+              placeholder="Tell us about your vehicle and what service you need..."
+            ></textarea>
+          </div>
+
+          <!-- Submit Button -->
+          <button
+            type="submit"
+            class="btn-primary w-full justify-center"
+          >
+            <svg viewBox="0 0 24 24" class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M3 7h18M5 7l5.5 4.5a3 3 0 0 0 4 0L20 7M5 7v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7" />
+            </svg>
+            Send Message
+          </button>
+
+          <p class="text-xs text-slate-500">
+            By submitting this form, you agree to our <a href="/privacy" class="text-brand-orange hover:underline">Privacy Policy</a>.
+            We'll only use your information to respond to your enquiry.
+          </p>
+        </form>
+      </div>
+    </div>
+
+    <!-- Map Section -->
+    <section class="overflow-hidden rounded-3xl border border-slate-200 shadow-lg">
+      <iframe
+        title="A1 Service Expert location map"
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2432.370825002624!2d-0.717838823409184!3d52.40985247201358!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x48779b0069361c17%3A0x2dd4b577752db42e!2s11%20Cunliffe%20Dr%2C%20Kettering%20NN16%208LD!5e0!3m2!1sen!2suk!4v1700000000000!5m2!1sen!2suk"
+        loading="lazy"
+        allowfullscreen
+        referrerpolicy="no-referrer-when-downgrade"
+        class="h-96 w-full border-0"
+      ></iframe>
+    </section>
+  </div>
+</BaseLayout>
