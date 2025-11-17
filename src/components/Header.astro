@@ -21,7 +21,7 @@ const whatsappMessage = "Hi, I'd like to enquire about your car services";
 const whatsappUrl = `https://wa.me/447394433889?text=${encodeURIComponent(whatsappMessage)}`;
 ---
 
-<header class="sticky top-0 z-50 border-b border-slate-200 bg-white shadow-sm">
+<header class="fixed top-0 left-0 right-0 z-50 border-b border-slate-800 bg-slate-900/95 text-white shadow-lg backdrop-blur-sm">
   <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
     <!-- Mobile: Logo on left, Menu button on right -->
     <div class="flex items-center justify-between py-4 md:hidden">
@@ -30,7 +30,7 @@ const whatsappUrl = `https://wa.me/447394433889?text=${encodeURIComponent(whatsa
       </a>
       <button
         id="mobile-menu-button"
-        class="inline-flex items-center justify-center rounded-md p-2 text-slate-700 hover:bg-slate-100 hover:text-brand-orange"
+        class="inline-flex items-center justify-center rounded-md p-2 text-slate-200 hover:bg-slate-800 hover:text-brand-orange"
         aria-label="Toggle mobile menu"
         aria-expanded="false"
       >
@@ -56,7 +56,7 @@ const whatsappUrl = `https://wa.me/447394433889?text=${encodeURIComponent(whatsa
             href={link.href}
             class:list={[
               'text-sm font-semibold transition hover:text-brand-orange',
-              currentPath === link.href ? 'text-brand-orange' : 'text-slate-700'
+              currentPath === link.href ? 'text-brand-orange' : 'text-slate-200'
             ]}
           >
             {link.label}
@@ -67,7 +67,7 @@ const whatsappUrl = `https://wa.me/447394433889?text=${encodeURIComponent(whatsa
           <button
             class:list={[
               'flex items-center gap-1 text-sm font-semibold transition hover:text-brand-orange',
-              currentPath.startsWith('/services') || currentPath.includes('/car-servicing') || currentPath.includes('/air-conditioning') || currentPath.includes('/diagnostics') || currentPath.includes('/brake') || currentPath.includes('/clutch') || currentPath.includes('/cambelt') ? 'text-brand-orange' : 'text-slate-700'
+              currentPath.startsWith('/services') || currentPath.includes('/car-servicing') || currentPath.includes('/air-conditioning') || currentPath.includes('/diagnostics') || currentPath.includes('/brake') || currentPath.includes('/clutch') || currentPath.includes('/cambelt') ? 'text-brand-orange' : 'text-slate-200'
             ]}
             aria-label="Services menu"
             aria-expanded="false"
@@ -77,13 +77,13 @@ const whatsappUrl = `https://wa.me/447394433889?text=${encodeURIComponent(whatsa
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
             </svg>
           </button>
-          <div class="services-menu absolute left-0 top-full mt-2 hidden w-56 rounded-lg border border-slate-200 bg-white shadow-lg">
+          <div class="services-menu absolute left-0 top-full mt-2 hidden w-56 rounded-lg border border-slate-700 bg-slate-900 shadow-lg">
             {serviceLinks.map((link) => (
               <a
                 href={link.href}
                 class:list={[
-                  'block px-4 py-2.5 text-sm transition hover:bg-orange-50 hover:text-brand-orange first:rounded-t-lg last:rounded-b-lg',
-                  currentPath === link.href ? 'bg-orange-50 text-brand-orange font-semibold' : 'text-slate-700'
+                  'block px-4 py-2.5 text-sm transition hover:bg-slate-800 hover:text-brand-orange first:rounded-t-lg last:rounded-b-lg',
+                  currentPath === link.href ? 'bg-slate-800 text-brand-orange font-semibold' : 'text-slate-200'
                 ]}
               >
                 {link.label}
@@ -122,14 +122,14 @@ const whatsappUrl = `https://wa.me/447394433889?text=${encodeURIComponent(whatsa
   </div>
 
   <!-- Mobile Menu -->
-  <div id="mobile-menu" class="hidden border-t border-slate-200 bg-white md:hidden">
+  <div id="mobile-menu" class="hidden border-t border-slate-800 bg-slate-900 md:hidden">
     <nav class="space-y-1 px-4 pb-4 pt-2" aria-label="Mobile navigation">
       {navLinks.map((link) => (
         <a
           href={link.href}
           class:list={[
-            'block rounded-lg px-3 py-2 text-base font-semibold transition hover:bg-slate-100 hover:text-brand-orange',
-            currentPath === link.href ? 'bg-orange-50 text-brand-orange' : 'text-slate-700'
+            'block rounded-lg px-3 py-2 text-base font-semibold transition hover:bg-slate-800 hover:text-brand-orange',
+            currentPath === link.href ? 'bg-slate-800 text-brand-orange' : 'text-slate-200'
           ]}
         >
           {link.label}
@@ -141,8 +141,8 @@ const whatsappUrl = `https://wa.me/447394433889?text=${encodeURIComponent(whatsa
         <button
           id="mobile-services-button"
           class:list={[
-            'flex w-full items-center justify-between rounded-lg px-3 py-2 text-base font-semibold transition hover:bg-slate-100 hover:text-brand-orange',
-            currentPath.startsWith('/services') || currentPath.includes('/car-servicing') || currentPath.includes('/air-conditioning') || currentPath.includes('/diagnostics') || currentPath.includes('/brake') || currentPath.includes('/clutch') || currentPath.includes('/cambelt') ? 'bg-orange-50 text-brand-orange' : 'text-slate-700'
+            'flex w-full items-center justify-between rounded-lg px-3 py-2 text-base font-semibold transition hover:bg-slate-800 hover:text-brand-orange',
+            currentPath.startsWith('/services') || currentPath.includes('/car-servicing') || currentPath.includes('/air-conditioning') || currentPath.includes('/diagnostics') || currentPath.includes('/brake') || currentPath.includes('/clutch') || currentPath.includes('/cambelt') ? 'bg-slate-800 text-brand-orange' : 'text-slate-200'
           ]}
           aria-label="Services menu"
           aria-expanded="false"
@@ -157,8 +157,8 @@ const whatsappUrl = `https://wa.me/447394433889?text=${encodeURIComponent(whatsa
             <a
               href={link.href}
               class:list={[
-                'block rounded-lg px-3 py-2 text-sm transition hover:bg-slate-100 hover:text-brand-orange',
-                currentPath === link.href ? 'bg-orange-50 text-brand-orange font-semibold' : 'text-slate-600'
+                'block rounded-lg px-3 py-2 text-sm transition hover:bg-slate-800 hover:text-brand-orange',
+                currentPath === link.href ? 'bg-slate-800 text-brand-orange font-semibold' : 'text-slate-300'
               ]}
             >
               {link.label}

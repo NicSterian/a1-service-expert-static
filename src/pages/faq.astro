@@ -1,0 +1,127 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const faqs = [
+  {
+    id: 1,
+    question: 'Do I need to book in advance?',
+    answer: 'While we welcome walk-ins, we recommend calling ahead to ensure availability. For complex jobs like cambelts or clutches, advance booking is essential so we can allocate sufficient time and order any specific parts.'
+  },
+  {
+    id: 2,
+    question: 'What payment methods do you accept?',
+    answer: 'We accept cash, all major debit/credit cards, and bank transfers. Payment is due upon collection of your vehicle unless alternative arrangements have been agreed in advance.'
+  },
+  {
+    id: 3,
+    question: 'Do you offer warranties on your work?',
+    answer: 'Yes! All our work is guaranteed, and we use quality OEM or premium aftermarket parts. Warranty periods vary depending on the type of work and parts used - we\'ll confirm the specific warranty when providing your quote.'
+  },
+  {
+    id: 4,
+    question: 'Can you work on my car make/model?',
+    answer: 'We service and repair all makes and models, from everyday family cars to premium vehicles. Our dealer-level diagnostic equipment and experienced technicians mean we can handle virtually any vehicle that comes through our doors.'
+  },
+  {
+    id: 5,
+    question: 'How long does a service take?',
+    answer: 'A standard oil and filter change (Service 1) typically takes 30-45 minutes. Interim services (Service 2) take around 1-2 hours, while full services (Service 3) can take 2-3 hours depending on the vehicle. We\'ll give you an estimated completion time when you book.'
+  },
+  {
+    id: 6,
+    question: 'Will servicing with you affect my manufacturer warranty?',
+    answer: 'No. Independent garages like ours can service your car without affecting your manufacturer warranty, as long as we use the correct parts and follow manufacturer schedules - which we always do. This is a common misconception that saves our customers hundreds of pounds!'
+  },
+  {
+    id: 7,
+    question: 'Do you provide free quotes?',
+    answer: 'Absolutely! We offer free, no-obligation quotes for all work. For diagnostics, there may be a small fee for the diagnostic check itself, but this is deducted from the repair cost if you proceed with us.'
+  },
+  {
+    id: 8,
+    question: 'What if you find additional work needed during my service?',
+    answer: 'We will always contact you before carrying out any additional work. We\'ll explain what we\'ve found, why it needs attention, and provide a clear quote. You\'re never obligated to proceed with extra work, though we\'ll advise on what\'s urgent for safety.'
+  },
+  {
+    id: 9,
+    question: 'Can I wait while my car is being serviced?',
+    answer: 'For quick jobs like oil changes or minor repairs, you\'re welcome to wait. However, our waiting area is limited, so for longer jobs we recommend dropping your car off and collecting it later. We\'ll keep you updated by phone throughout the day.'
+  },
+  {
+    id: 10,
+    question: 'Do you do MOT tests?',
+    answer: 'We don\'t currently offer MOT testing on-site, but we can recommend trusted local MOT centers. We can handle all MOT repairs and advisory work, ensuring your vehicle is in top condition before you book your test.'
+  },
+  {
+    id: 11,
+    question: 'What happens if my car breaks down?',
+    answer: 'If your vehicle has broken down, we can assess and repair it once it arrives at our workshop. We don\'t offer roadside recovery, so you\'ll need to arrange towing through your breakdown cover (AA, RAC, etc.) or a local recovery service.'
+  },
+  {
+    id: 12,
+    question: 'How do I know what service my car needs?',
+    answer: 'Check your vehicle handbook for the manufacturer\'s recommended service intervals. Generally, Service 1 (oil & filter) is needed annually or every 10,000 miles, Service 2 (interim) every 12 months or 12,000 miles, and Service 3 (full) every 2 years or 24,000 miles. If you\'re unsure, just call us with your registration and mileage - we\'ll advise!'
+  },
+];
+---
+
+<BaseLayout
+  title="Frequently Asked Questions | A1 Service Expert"
+  description="Common questions about our car servicing, repairs, and workshop in Kettering. Find answers about booking, pricing, warranties, and more."
+  canonical="https://a1serviceexpert.com/faq"
+>
+  <!-- Page Header -->
+  <div class="border-b border-slate-200 pb-8">
+    <h1 class="text-4xl font-bold text-slate-900 sm:text-5xl">Frequently Asked Questions</h1>
+    <p class="mt-4 text-lg text-slate-600">
+      Got questions? We've got answers. Can't find what you're looking for?
+      <a href="/contact" class="font-semibold text-brand-orange hover:underline">
+        Get in touch
+      </a>
+      and we'll be happy to help.
+    </p>
+  </div>
+
+  <!-- FAQ List -->
+  <div class="mt-12 space-y-8">
+    {faqs.map((faq, index) => (
+      <div class="rounded-lg border border-slate-200 bg-white p-6 shadow-sm transition hover:shadow-md">
+        <h2 class="text-lg font-semibold text-slate-900">
+          <span class="mr-2 inline-flex h-8 w-8 items-center justify-center rounded-full bg-brand-orange text-sm font-bold text-white">
+            {index + 1}
+          </span>
+          {faq.question}
+        </h2>
+        <p class="mt-3 pl-10 leading-relaxed text-slate-700">{faq.answer}</p>
+      </div>
+    ))}
+  </div>
+
+  <!-- Contact CTA -->
+  <div class="mt-16 rounded-xl bg-slate-900 p-8 text-center text-white sm:p-12">
+    <h2 class="text-2xl font-bold sm:text-3xl">Still Have Questions?</h2>
+    <p class="mt-3 text-slate-300">
+      We're here to help. Give us a call or send us a message and we'll get back to you promptly.
+    </p>
+    <div class="mt-6 flex flex-col items-center justify-center gap-3 sm:flex-row">
+      <a
+        href="tel:07394433889"
+        class="inline-flex items-center gap-2 rounded-full bg-brand-orange px-6 py-3 font-semibold text-white transition hover:bg-orange-500"
+      >
+        <svg viewBox="0 0 24 24" class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="2">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M3 5a2 2 0 0 1 2-2h2.28a2 2 0 0 1 1.94 1.515l.74 2.964a2 2 0 0 1-.97 2.26l-1.21.726a11 11 0 0 0 5.1 5.1l.73-1.21a2 2 0 0 1 2.26-.97l2.96.74A2 2 0 0 1 21 18.72V21a2 2 0 0 1-2 2h-1c-8.284 0-15-6.716-15-15V5Z" />
+        </svg>
+        Call 07394 433889
+      </a>
+      <a
+        href="/contact"
+        class="inline-flex items-center gap-2 rounded-full border-2 border-white px-6 py-3 font-semibold transition hover:bg-white hover:text-slate-900"
+      >
+        <svg viewBox="0 0 24 24" class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="2">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M3 7h18M5 7l5.5 4.5a3 3 0 0 0 4 0L20 7M5 7v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7" />
+        </svg>
+        Contact Us
+      </a>
+    </div>
+  </div>
+</BaseLayout>

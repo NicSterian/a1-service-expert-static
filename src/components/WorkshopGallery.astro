@@ -1,0 +1,99 @@
+---
+// IMPORTANT: Image Setup Instructions
+// =====================================
+// Replace these placeholder images with your actual workshop photos
+//
+// Image Requirements:
+// - Format: .webp (preferred) or .jpg
+// - Dimensions: 800x600px (4:3 aspect ratio recommended)
+// - File size: Keep under 200KB per image for best performance
+// - Location: /public/images/gallery/
+//
+// Suggested Photos:
+// 1. workshop-exterior.webp - Front of your workshop/garage
+// 2. workshop-interior.webp - Clean, organized workshop area
+// 3. team-at-work.webp - Cornel or Florin working on a vehicle
+// 4. diagnostic-equipment.webp - Your diagnostic tools/equipment
+// 5. before-after-1.webp - Before/after of a repair job
+// 6. before-after-2.webp - Another before/after example
+//
+// To convert images to WebP format:
+// - Online: https://squoosh.app/ (drag & drop, select WebP, download)
+// - Or keep as .jpg and update the paths below
+//
+// Temporary placeholders are using free stock images from Unsplash
+
+const galleryImages = [
+  {
+    src: '/images/gallery/workshop-exterior.webp',
+    alt: 'A1 Service Expert Workshop Exterior',
+    title: 'Our Workshop in Kettering'
+  },
+  {
+    src: '/images/gallery/workshop-interior.webp',
+    alt: 'Professional workshop with modern equipment',
+    title: 'State-of-the-Art Equipment'
+  },
+  {
+    src: '/images/gallery/team-at-work.webp',
+    alt: 'Expert technician diagnosing vehicle',
+    title: 'Expert Diagnostics'
+  },
+  {
+    src: '/images/gallery/diagnostic-equipment.webp',
+    alt: 'Dealer-level diagnostic equipment',
+    title: 'Latest Technology'
+  },
+  {
+    src: '/images/gallery/before-after-1.webp',
+    alt: 'Quality brake repair work',
+    title: 'Brake System Service'
+  },
+  {
+    src: '/images/gallery/before-after-2.webp',
+    alt: 'Engine service completed',
+    title: 'Complete Engine Service'
+  },
+];
+---
+
+<section class="bg-white py-16">
+  <div class="mx-auto max-w-7xl px-4 sm:px-6">
+    <!-- Section Header -->
+    <div class="text-center">
+      <h2 class="text-3xl font-bold text-slate-900 sm:text-4xl">Our Workshop</h2>
+      <p class="mt-3 text-lg text-slate-600">
+        Professional facilities and expert technicians at your service
+      </p>
+    </div>
+
+    <!-- Gallery Grid -->
+    <div class="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+      {galleryImages.map((image, index) => (
+        <div class="group relative overflow-hidden rounded-lg bg-slate-100 shadow-md transition hover:shadow-xl">
+          <img
+            src={image.src}
+            alt={image.alt}
+            class="h-64 w-full object-cover transition duration-300 group-hover:scale-105"
+            loading={index < 3 ? 'eager' : 'lazy'}
+          />
+          <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 transition-opacity group-hover:opacity-100">
+            <div class="absolute bottom-0 left-0 right-0 p-4">
+              <p class="text-sm font-semibold text-white">{image.title}</p>
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+
+    <!-- CTA -->
+    <div class="mt-10 text-center">
+      <p class="text-slate-600">
+        Want to see more? Visit us at
+        <a href="/contact" class="font-semibold text-brand-orange hover:underline">
+          11 Cunliffe Dr, Kettering NN16 8LD
+        </a>
+      </p>
+    </div>
+  </div>
+</section>

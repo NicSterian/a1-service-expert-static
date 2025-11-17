@@ -1,5 +1,8 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import TrustBadges from '../components/TrustBadges.astro';
+import Testimonials from '../components/Testimonials.astro';
+import WorkshopGallery from '../components/WorkshopGallery.astro';
 
 const heroHighlights = [
   {
@@ -139,6 +142,9 @@ const whyChooseUs = [
       </div>
     </section>
 
+    <!-- Trust Badges -->
+    <TrustBadges />
+
     <!-- Services Overview Section -->
     <section
       class="relative overflow-hidden rounded-3xl border border-slate-200 bg-white shadow-sm"
@@ -224,6 +230,9 @@ const whyChooseUs = [
       </div>
     </section>
 
+    <!-- Testimonials -->
+    <Testimonials />
+
     <!-- Reviews Section -->
     <section
       class="relative overflow-hidden rounded-3xl text-white shadow-xl"
@@ -254,6 +263,9 @@ const whyChooseUs = [
         </a>
       </div>
     </section>
+
+    <!-- Workshop Gallery -->
+    <WorkshopGallery />
 
     <!-- Contact Section -->
     <section class="space-y-8 rounded-3xl border border-slate-700 bg-slate-900 p-8 shadow-inner sm:p-12">
