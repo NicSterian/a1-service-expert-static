@@ -3,22 +3,54 @@ const currentPath = Astro.url.pathname;
 
 const navLinks = [
   { href: '/', label: 'Home' },
-  { href: '/services', label: 'Services' },
   { href: '/about', label: 'About Us' },
   { href: '/contact', label: 'Contact' },
 ];
+
+const serviceLinks = [
+  { href: '/services', label: 'All Services' },
+  { href: '/car-servicing', label: 'Car Servicing' },
+  { href: '/air-conditioning', label: 'Air Conditioning' },
+  { href: '/diagnostics', label: 'Engine Diagnostics' },
+  { href: '/brake-repair', label: 'Brake Repair' },
+  { href: '/clutch-replacement', label: 'Clutch Replacement' },
+  { href: '/cambelt-replacement', label: 'Cambelt Replacement' },
+];
+
+const whatsappMessage = "Hi, I'd like to enquire about your car services";
+const whatsappUrl = `https://wa.me/447394433889?text=${encodeURIComponent(whatsappMessage)}`;
 ---
 
 <header class="sticky top-0 z-50 border-b border-slate-200 bg-white shadow-sm">
   <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-    <div class="flex h-20 items-center justify-between">
-      <!-- Logo -->
+    <!-- Mobile: Logo on left, Menu button on right -->
+    <div class="flex items-center justify-between py-4 md:hidden">
       <a href="/" class="flex items-center" aria-label="A1 Service Expert home">
-        <img src="/images/logo.webp" alt="A1 Service Expert" class="h-16 w-auto sm:h-20" />
+        <img src="/images/logo.webp" alt="A1 Service Expert" class="h-16 w-auto" />
       </a>
+      <button
+        id="mobile-menu-button"
+        class="inline-flex items-center justify-center rounded-md p-2 text-slate-700 hover:bg-slate-100 hover:text-brand-orange"
+        aria-label="Toggle mobile menu"
+        aria-expanded="false"
+      >
+        <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+        </svg>
+      </button>
+    </div>
 
-      <!-- Desktop Navigation -->
-      <nav class="hidden items-center gap-8 md:flex" aria-label="Main navigation">
+    <!-- Desktop: Logo centered on top -->
+    <div class="hidden md:flex w-full items-center justify-center py-6">
+      <a href="/" aria-label="A1 Service Expert home">
+        <img src="/images/logo.webp" alt="A1 Service Expert" class="h-32 w-auto lg:h-40" />
+      </a>
+    </div>
+
+    <!-- Desktop: Navigation and CTA buttons below logo -->
+    <div class="hidden md:flex items-center justify-between pb-4">
+      <!-- Desktop Navigation with Services Dropdown -->
+      <nav class="flex items-center gap-8" aria-label="Main navigation">
         {navLinks.map((link) => (
           <a
             href={link.href}
@@ -30,10 +62,39 @@ const navLinks = [
             {link.label}
           </a>
         ))}
+        <!-- Services Dropdown -->
+        <div class="services-dropdown relative">
+          <button
+            class:list={[
+              'flex items-center gap-1 text-sm font-semibold transition hover:text-brand-orange',
+              currentPath.startsWith('/services') || currentPath.includes('/car-servicing') || currentPath.includes('/air-conditioning') || currentPath.includes('/diagnostics') || currentPath.includes('/brake') || currentPath.includes('/clutch') || currentPath.includes('/cambelt') ? 'text-brand-orange' : 'text-slate-700'
+            ]}
+            aria-label="Services menu"
+            aria-expanded="false"
+          >
+            Services
+            <svg class="h-4 w-4 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+            </svg>
+          </button>
+          <div class="services-menu absolute left-0 top-full mt-2 hidden w-56 rounded-lg border border-slate-200 bg-white shadow-lg">
+            {serviceLinks.map((link) => (
+              <a
+                href={link.href}
+                class:list={[
+                  'block px-4 py-2.5 text-sm transition hover:bg-orange-50 hover:text-brand-orange first:rounded-t-lg last:rounded-b-lg',
+                  currentPath === link.href ? 'bg-orange-50 text-brand-orange font-semibold' : 'text-slate-700'
+                ]}
+              >
+                {link.label}
+              </a>
+            ))}
+          </div>
+        </div>
       </nav>
 
       <!-- Desktop CTA Buttons -->
-      <div class="hidden items-center gap-3 lg:flex">
+      <div class="flex items-center gap-3">
         <a
           href="tel:07394433889"
           class="inline-flex items-center gap-2 rounded-full bg-brand-orange px-5 py-2.5 text-sm font-semibold text-white transition hover:-translate-y-0.5 hover:bg-orange-500"
@@ -45,7 +106,7 @@ const navLinks = [
           Call Us
         </a>
         <a
-          href="https://wa.me/447394433889"
+          href={whatsappUrl}
           target="_blank"
           rel="noreferrer"
           class="inline-flex items-center gap-2 rounded-full border border-brand-orange px-5 py-2.5 text-sm font-semibold text-brand-orange transition hover:-translate-y-0.5 hover:bg-brand-orange hover:text-white"
@@ -57,18 +118,6 @@ const navLinks = [
           WhatsApp
         </a>
       </div>
-
-      <!-- Mobile Menu Button -->
-      <button
-        id="mobile-menu-button"
-        class="inline-flex items-center justify-center rounded-md p-2 text-slate-700 hover:bg-slate-100 hover:text-brand-orange md:hidden"
-        aria-label="Toggle mobile menu"
-        aria-expanded="false"
-      >
-        <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
-        </svg>
-      </button>
     </div>
   </div>
 
@@ -86,6 +135,38 @@ const navLinks = [
           {link.label}
         </a>
       ))}
+
+      <!-- Mobile Services Accordion -->
+      <div class="mobile-services-accordion">
+        <button
+          id="mobile-services-button"
+          class:list={[
+            'flex w-full items-center justify-between rounded-lg px-3 py-2 text-base font-semibold transition hover:bg-slate-100 hover:text-brand-orange',
+            currentPath.startsWith('/services') || currentPath.includes('/car-servicing') || currentPath.includes('/air-conditioning') || currentPath.includes('/diagnostics') || currentPath.includes('/brake') || currentPath.includes('/clutch') || currentPath.includes('/cambelt') ? 'bg-orange-50 text-brand-orange' : 'text-slate-700'
+          ]}
+          aria-label="Services menu"
+          aria-expanded="false"
+        >
+          Services
+          <svg class="h-4 w-4 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+          </svg>
+        </button>
+        <div id="mobile-services-menu" class="hidden pl-3 pt-1 space-y-1">
+          {serviceLinks.map((link) => (
+            <a
+              href={link.href}
+              class:list={[
+                'block rounded-lg px-3 py-2 text-sm transition hover:bg-slate-100 hover:text-brand-orange',
+                currentPath === link.href ? 'bg-orange-50 text-brand-orange font-semibold' : 'text-slate-600'
+              ]}
+            >
+              {link.label}
+            </a>
+          ))}
+        </div>
+      </div>
+
       <div class="flex flex-col gap-3 pt-4">
         <a
           href="tel:07394433889"
@@ -97,7 +178,7 @@ const navLinks = [
           Call 07394 433889
         </a>
         <a
-          href="https://wa.me/447394433889"
+          href={whatsappUrl}
           target="_blank"
           rel="noreferrer"
           class="inline-flex items-center justify-center gap-2 rounded-full border border-brand-orange px-5 py-2.5 text-sm font-semibold text-brand-orange transition hover:bg-brand-orange hover:text-white"
@@ -114,12 +195,60 @@ const navLinks = [
 
 <script>
   // Mobile menu toggle
-  const button = document.getElementById('mobile-menu-button');
-  const menu = document.getElementById('mobile-menu');
+  const mobileMenuButton = document.getElementById('mobile-menu-button');
+  const mobileMenu = document.getElementById('mobile-menu');
 
-  button?.addEventListener('click', () => {
-    const isExpanded = button.getAttribute('aria-expanded') === 'true';
-    button.setAttribute('aria-expanded', String(!isExpanded));
-    menu?.classList.toggle('hidden');
+  mobileMenuButton?.addEventListener('click', () => {
+    const isExpanded = mobileMenuButton.getAttribute('aria-expanded') === 'true';
+    mobileMenuButton.setAttribute('aria-expanded', String(!isExpanded));
+    mobileMenu?.classList.toggle('hidden');
+  });
+
+  // Mobile services accordion
+  const mobileServicesButton = document.getElementById('mobile-services-button');
+  const mobileServicesMenu = document.getElementById('mobile-services-menu');
+
+  mobileServicesButton?.addEventListener('click', () => {
+    const isExpanded = mobileServicesButton.getAttribute('aria-expanded') === 'true';
+    mobileServicesButton.setAttribute('aria-expanded', String(!isExpanded));
+    mobileServicesMenu?.classList.toggle('hidden');
+
+    // Rotate arrow icon
+    const arrow = mobileServicesButton.querySelector('svg');
+    arrow?.classList.toggle('rotate-180');
+  });
+
+  // Desktop services dropdown
+  const servicesDropdown = document.querySelector('.services-dropdown');
+  const servicesButton = servicesDropdown?.querySelector('button');
+  const servicesMenu = servicesDropdown?.querySelector('.services-menu');
+
+  let dropdownTimeout: ReturnType<typeof setTimeout> | null = null;
+
+  servicesDropdown?.addEventListener('mouseenter', () => {
+    if (dropdownTimeout) {
+      clearTimeout(dropdownTimeout);
+      dropdownTimeout = null;
+    }
+    servicesButton?.setAttribute('aria-expanded', 'true');
+    servicesMenu?.classList.remove('hidden');
+    servicesButton?.querySelector('svg')?.classList.add('rotate-180');
+  });
+
+  servicesDropdown?.addEventListener('mouseleave', () => {
+    dropdownTimeout = setTimeout(() => {
+      servicesButton?.setAttribute('aria-expanded', 'false');
+      servicesMenu?.classList.add('hidden');
+      servicesButton?.querySelector('svg')?.classList.remove('rotate-180');
+    }, 200);
+  });
+
+  // Click toggle for desktop dropdown (accessibility)
+  servicesButton?.addEventListener('click', (e) => {
+    e.preventDefault();
+    const isExpanded = servicesButton.getAttribute('aria-expanded') === 'true';
+    servicesButton.setAttribute('aria-expanded', String(!isExpanded));
+    servicesMenu?.classList.toggle('hidden');
+    servicesButton?.querySelector('svg')?.classList.toggle('rotate-180');
   });
 </script>

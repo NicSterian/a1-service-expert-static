@@ -10,6 +10,9 @@ const openingHours = [
   { day: 'Saturday', time: '09:00 - 14:30' },
   { day: 'Sunday', time: 'Closed' },
 ];
+
+const whatsappMessage = "Hi, I'd like to enquire about your car services";
+const whatsappUrl = `https://wa.me/447394433889?text=${encodeURIComponent(whatsappMessage)}`;
 ---
 
 <footer class="border-t border-slate-800 bg-slate-900 py-10 text-slate-300">
@@ -65,7 +68,7 @@ const openingHours = [
           Email Us
         </a>
         <a
-          href="https://wa.me/447394433889"
+          href={whatsappUrl}
           target="_blank"
           rel="noreferrer"
           aria-label="Chat on WhatsApp"
