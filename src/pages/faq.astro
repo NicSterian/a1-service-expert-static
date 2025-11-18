@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 
+// FAQ data for rendering and schema
 const faqs = [
   {
     id: 1,
@@ -70,6 +71,20 @@ const faqs = [
   description="Common questions about our car servicing, repairs, and workshop in Kettering. Find answers about booking, pricing, warranties, and more."
   canonical="https://a1serviceexpert.com/faq"
 >
+  <!-- FAQ Schema Markup for SEO -->
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": faqs.map(faq => ({
+      "@type": "Question",
+      "name": faq.question,
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": faq.answer
+      }
+    }))
+  })} slot="head" />
+
   <!-- Page Header -->
   <div class="border-b border-slate-200 pb-8">
     <h1 class="text-4xl font-bold text-slate-900 sm:text-5xl">Frequently Asked Questions</h1>
