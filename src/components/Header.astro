@@ -1,15 +1,6 @@
 ---
 const currentPath = Astro.url.pathname;
 
-const navLinks = [
-  { href: '/', label: 'Home' },
-  { href: '/diagnostics', label: 'Diagnostics' },
-  { href: '/air-conditioning', label: 'Air Con' },
-  { href: '/about', label: 'About Us' },
-  { href: '/faq', label: 'FAQ' },
-  { href: '/contact', label: 'Contact' },
-];
-
 const serviceLinks = [
   { href: '/services', label: 'All Services' },
   { href: '/car-servicing', label: 'Car Servicing' },
@@ -54,17 +45,27 @@ const whatsappUrl = `https://wa.me/447394433889?text=${encodeURIComponent(whatsa
     <div class="hidden md:flex items-center justify-between pb-4">
       <!-- Desktop Navigation -->
       <nav class="flex items-center gap-6" aria-label="Main navigation">
-        {navLinks.map((link) => (
-          <a
-            href={link.href}
-            class:list={[
-              'text-sm font-semibold transition hover:text-brand-orange whitespace-nowrap',
-              currentPath === link.href ? 'text-brand-orange' : 'text-slate-200'
-            ]}
-          >
-            {link.label}
-          </a>
-        ))}
+        <!-- Home -->
+        <a
+          href="/"
+          class:list={[
+            'text-sm font-semibold transition hover:text-brand-orange whitespace-nowrap',
+            currentPath === '/' ? 'text-brand-orange' : 'text-slate-200'
+          ]}
+        >
+          Home
+        </a>
+
+        <!-- About Us -->
+        <a
+          href="/about"
+          class:list={[
+            'text-sm font-semibold transition hover:text-brand-orange whitespace-nowrap',
+            currentPath === '/about' ? 'text-brand-orange' : 'text-slate-200'
+          ]}
+        >
+          About Us
+        </a>
 
         <!-- Services Dropdown -->
         <div class="relative" id="services-dropdown">
@@ -98,6 +99,61 @@ const whatsappUrl = `https://wa.me/447394433889?text=${encodeURIComponent(whatsa
             </div>
           </div>
         </div>
+
+        <!-- Air Con -->
+        <a
+          href="/air-conditioning"
+          class:list={[
+            'text-sm font-semibold transition hover:text-brand-orange whitespace-nowrap',
+            currentPath === '/air-conditioning' ? 'text-brand-orange' : 'text-slate-200'
+          ]}
+        >
+          Air Con
+        </a>
+
+        <!-- Diagnostics -->
+        <a
+          href="/diagnostics"
+          class:list={[
+            'text-sm font-semibold transition hover:text-brand-orange whitespace-nowrap',
+            currentPath === '/diagnostics' ? 'text-brand-orange' : 'text-slate-200'
+          ]}
+        >
+          Diagnostics
+        </a>
+
+        <!-- Gallery -->
+        <a
+          href="/gallery"
+          class:list={[
+            'text-sm font-semibold transition hover:text-brand-orange whitespace-nowrap',
+            currentPath === '/gallery' ? 'text-brand-orange' : 'text-slate-200'
+          ]}
+        >
+          Gallery
+        </a>
+
+        <!-- FAQ -->
+        <a
+          href="/faq"
+          class:list={[
+            'text-sm font-semibold transition hover:text-brand-orange whitespace-nowrap',
+            currentPath === '/faq' ? 'text-brand-orange' : 'text-slate-200'
+          ]}
+        >
+          FAQ
+        </a>
+
+        <!-- Contact Us -->
+        <a
+          href="/contact"
+          class:list={[
+            'text-sm font-semibold transition hover:text-brand-orange whitespace-nowrap',
+            currentPath === '/contact' ? 'text-brand-orange' : 'text-slate-200'
+          ]}
+        >
+          Contact Us
+        </a>
       </nav>
 
       <!-- Desktop CTA Buttons -->
@@ -131,17 +187,27 @@ const whatsappUrl = `https://wa.me/447394433889?text=${encodeURIComponent(whatsa
   <!-- Mobile Menu -->
   <div id="mobile-menu" class="hidden border-t border-slate-800 bg-slate-900 md:hidden">
     <nav class="space-y-1 px-4 pb-4 pt-2" aria-label="Mobile navigation">
-      {navLinks.map((link) => (
-        <a
-          href={link.href}
-          class:list={[
-            'block rounded-lg px-3 py-2 text-base font-semibold transition hover:bg-slate-800 hover:text-brand-orange',
-            currentPath === link.href ? 'bg-slate-800 text-brand-orange' : 'text-slate-200'
-          ]}
-        >
-          {link.label}
-        </a>
-      ))}
+      <!-- Home -->
+      <a
+        href="/"
+        class:list={[
+          'block rounded-lg px-3 py-2 text-base font-semibold transition hover:bg-slate-800 hover:text-brand-orange',
+          currentPath === '/' ? 'bg-slate-800 text-brand-orange' : 'text-slate-200'
+        ]}
+      >
+        Home
+      </a>
+
+      <!-- About Us -->
+      <a
+        href="/about"
+        class:list={[
+          'block rounded-lg px-3 py-2 text-base font-semibold transition hover:bg-slate-800 hover:text-brand-orange',
+          currentPath === '/about' ? 'bg-slate-800 text-brand-orange' : 'text-slate-200'
+        ]}
+      >
+        About Us
+      </a>
 
       <!-- Mobile Services Accordion -->
       <div>
@@ -169,6 +235,61 @@ const whatsappUrl = `https://wa.me/447394433889?text=${encodeURIComponent(whatsa
           ))}
         </div>
       </div>
+
+      <!-- Air Con -->
+      <a
+        href="/air-conditioning"
+        class:list={[
+          'block rounded-lg px-3 py-2 text-base font-semibold transition hover:bg-slate-800 hover:text-brand-orange',
+          currentPath === '/air-conditioning' ? 'bg-slate-800 text-brand-orange' : 'text-slate-200'
+        ]}
+      >
+        Air Con
+      </a>
+
+      <!-- Diagnostics -->
+      <a
+        href="/diagnostics"
+        class:list={[
+          'block rounded-lg px-3 py-2 text-base font-semibold transition hover:bg-slate-800 hover:text-brand-orange',
+          currentPath === '/diagnostics' ? 'bg-slate-800 text-brand-orange' : 'text-slate-200'
+        ]}
+      >
+        Diagnostics
+      </a>
+
+      <!-- Gallery -->
+      <a
+        href="/gallery"
+        class:list={[
+          'block rounded-lg px-3 py-2 text-base font-semibold transition hover:bg-slate-800 hover:text-brand-orange',
+          currentPath === '/gallery' ? 'bg-slate-800 text-brand-orange' : 'text-slate-200'
+        ]}
+      >
+        Gallery
+      </a>
+
+      <!-- FAQ -->
+      <a
+        href="/faq"
+        class:list={[
+          'block rounded-lg px-3 py-2 text-base font-semibold transition hover:bg-slate-800 hover:text-brand-orange',
+          currentPath === '/faq' ? 'bg-slate-800 text-brand-orange' : 'text-slate-200'
+        ]}
+      >
+        FAQ
+      </a>
+
+      <!-- Contact Us -->
+      <a
+        href="/contact"
+        class:list={[
+          'block rounded-lg px-3 py-2 text-base font-semibold transition hover:bg-slate-800 hover:text-brand-orange',
+          currentPath === '/contact' ? 'bg-slate-800 text-brand-orange' : 'text-slate-200'
+        ]}
+      >
+        Contact Us
+      </a>
 
       <div class="flex flex-col gap-3 pt-4">
         <a

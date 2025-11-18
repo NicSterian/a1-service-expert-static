@@ -1,0 +1,104 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const galleryImages = [
+  {
+    src: '/images/gallery/workshop-exterior.webp',
+    alt: 'A1 Service Expert Workshop Exterior',
+    title: 'Our Workshop in Kettering',
+    description: 'Professional facilities in the heart of Kettering'
+  },
+  {
+    src: '/images/gallery/workshop-interior.webp',
+    alt: 'Professional workshop with modern equipment',
+    title: 'State-of-the-Art Equipment',
+    description: 'Modern tools and diagnostic systems'
+  },
+  {
+    src: '/images/gallery/team-at-work.webp',
+    alt: 'Expert technician diagnosing vehicle',
+    title: 'Expert Diagnostics',
+    description: 'Skilled technicians at your service'
+  },
+  {
+    src: '/images/gallery/diagnostic-equipment.webp',
+    alt: 'Dealer-level diagnostic equipment',
+    title: 'Latest Technology',
+    description: 'Dealer-level diagnostic capabilities'
+  },
+  {
+    src: '/images/gallery/before-after-1.webp',
+    alt: 'Quality brake repair work',
+    title: 'Brake System Service',
+    description: 'Precision brake repairs and servicing'
+  },
+  {
+    src: '/images/gallery/before-after-2.webp',
+    alt: 'Engine service completed',
+    title: 'Complete Engine Service',
+    description: 'Comprehensive engine maintenance'
+  },
+];
+---
+
+<BaseLayout
+  title="Workshop Gallery | A1 Service Expert Kettering"
+  description="Take a look inside our professional workshop in Kettering. Modern equipment, expert technicians, and quality service."
+>
+  <div class="space-y-12 md:space-y-16">
+    <!-- Page Header -->
+    <section class="text-center">
+      <p class="text-sm font-bold uppercase tracking-widest text-brand-orange">Our Facilities</p>
+      <h1 class="mt-3 text-4xl font-bold text-slate-900 sm:text-5xl lg:text-6xl">Workshop Gallery</h1>
+      <p class="mx-auto mt-4 max-w-2xl text-base leading-relaxed text-slate-600 md:text-lg">
+        Take a look inside our professional workshop in Kettering. We combine modern equipment with expert knowledge to deliver exceptional service.
+      </p>
+    </section>
+
+    <!-- Gallery Grid -->
+    <section>
+      <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        {galleryImages.map((image, index) => (
+          <div class="card-hover group relative overflow-hidden rounded-2xl border-2 border-slate-200 bg-white shadow-lg">
+            <div class="aspect-[4/3] overflow-hidden">
+              <img
+                src={image.src}
+                alt={image.alt}
+                class="h-full w-full object-cover transition duration-500 group-hover:scale-110"
+                loading={index < 3 ? 'eager' : 'lazy'}
+              />
+            </div>
+            <div class="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-slate-950/40 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+              <div class="absolute bottom-0 left-0 right-0 p-6">
+                <h3 class="text-lg font-bold text-white">{image.title}</h3>
+                <p class="mt-1 text-sm text-slate-200">{image.description}</p>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="rounded-3xl border-2 border-brand-orange/30 bg-gradient-to-br from-slate-900 to-slate-950 p-8 text-center text-white shadow-2xl sm:p-12">
+      <h2 class="text-3xl font-bold lg:text-4xl">Visit Us Today</h2>
+      <p class="mx-auto mt-4 max-w-2xl text-base leading-relaxed text-slate-200">
+        See our facilities in person. We're located at 11 Cunliffe Dr, Kettering NN16 8LD. Call us to book your service or diagnostic check.
+      </p>
+      <div class="mt-8 flex flex-col gap-4 sm:flex-row sm:justify-center">
+        <a href="/contact" class="btn-primary">
+          <svg viewBox="0 0 24 24" class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M12 21s-6-5.686-6-10A6 6 0 0 1 18 11c0 4.314-6 10-6 10Zm0-9a2 2 0 1 0 0-4 2 2 0 0 0 0 4Z" />
+          </svg>
+          Get Directions
+        </a>
+        <a href="tel:07394433889" class="btn-secondary border-white text-white hover:bg-white hover:text-slate-900">
+          <svg viewBox="0 0 24 24" class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M3 5a2 2 0 0 1 2-2h2.28a2 2 0 0 1 1.94 1.515l.74 2.964a2 2 0 0 1-.97 2.26l-1.21.726a11 11 0 0 0 5.1 5.1l.73-1.21a2 2 0 0 1 2.26-.97l2.96.74A2 2 0 0 1 21 18.72V21a2 2 0 0 1-2 2h-1c-8.284 0-15-6.716-15-15V5Z" />
+          </svg>
+          Call Us
+        </a>
+      </div>
+    </section>
+  </div>
+</BaseLayout>
