@@ -10,6 +10,14 @@
   body {
     @apply bg-white text-slate-900 antialiased;
   }
+
+  /* Ensure header stays fixed on top */
+  header {
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+  }
 }
 
 @layer components {
