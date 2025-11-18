@@ -3,7 +3,10 @@ const currentPath = Astro.url.pathname;
 
 const navLinks = [
   { href: '/', label: 'Home' },
+  { href: '/services', label: 'Services' },
+  { href: '/car-servicing', label: 'Car Servicing' },
   { href: '/about', label: 'About Us' },
+  { href: '/faq', label: 'FAQ' },
   { href: '/contact', label: 'Contact' },
 ];
 
@@ -21,7 +24,7 @@ const whatsappMessage = "Hi, I'd like to enquire about your car services";
 const whatsappUrl = `https://wa.me/447394433889?text=${encodeURIComponent(whatsappMessage)}`;
 ---
 
-<header class="fixed top-0 left-0 right-0 z-50 border-b border-slate-800 bg-slate-900/95 text-white shadow-lg backdrop-blur-sm">
+<header class="fixed top-0 left-0 right-0 z-50 border-b-2 border-slate-700 bg-slate-900 text-white shadow-lg">
   <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
     <!-- Mobile: Logo on left, Menu button on right -->
     <div class="flex items-center justify-between py-4 md:hidden">
@@ -49,48 +52,19 @@ const whatsappUrl = `https://wa.me/447394433889?text=${encodeURIComponent(whatsa
 
     <!-- Desktop: Navigation and CTA buttons below logo -->
     <div class="hidden md:flex items-center justify-between pb-4">
-      <!-- Desktop Navigation with Services Dropdown -->
-      <nav class="flex items-center gap-8" aria-label="Main navigation">
+      <!-- Desktop Navigation -->
+      <nav class="flex items-center gap-6" aria-label="Main navigation">
         {navLinks.map((link) => (
           <a
             href={link.href}
             class:list={[
-              'text-sm font-semibold transition hover:text-brand-orange',
+              'text-sm font-semibold transition hover:text-brand-orange whitespace-nowrap',
               currentPath === link.href ? 'text-brand-orange' : 'text-slate-200'
             ]}
           >
             {link.label}
           </a>
         ))}
-        <!-- Services Dropdown -->
-        <div class="services-dropdown relative">
-          <button
-            class:list={[
-              'flex items-center gap-1 text-sm font-semibold transition hover:text-brand-orange',
-              currentPath.startsWith('/services') || currentPath.includes('/car-servicing') || currentPath.includes('/air-conditioning') || currentPath.includes('/diagnostics') || currentPath.includes('/brake') || currentPath.includes('/clutch') || currentPath.includes('/cambelt') ? 'text-brand-orange' : 'text-slate-200'
-            ]}
-            aria-label="Services menu"
-            aria-expanded="false"
-          >
-            Services
-            <svg class="h-4 w-4 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
-            </svg>
-          </button>
-          <div class="services-menu absolute left-0 top-full mt-2 hidden w-56 rounded-lg border border-slate-700 bg-slate-900 shadow-lg">
-            {serviceLinks.map((link) => (
-              <a
-                href={link.href}
-                class:list={[
-                  'block px-4 py-2.5 text-sm transition hover:bg-slate-800 hover:text-brand-orange first:rounded-t-lg last:rounded-b-lg',
-                  currentPath === link.href ? 'bg-slate-800 text-brand-orange font-semibold' : 'text-slate-200'
-                ]}
-              >
-                {link.label}
-              </a>
-            ))}
-          </div>
-        </div>
       </nav>
 
       <!-- Desktop CTA Buttons -->
@@ -136,37 +110,6 @@ const whatsappUrl = `https://wa.me/447394433889?text=${encodeURIComponent(whatsa
         </a>
       ))}
 
-      <!-- Mobile Services Accordion -->
-      <div class="mobile-services-accordion">
-        <button
-          id="mobile-services-button"
-          class:list={[
-            'flex w-full items-center justify-between rounded-lg px-3 py-2 text-base font-semibold transition hover:bg-slate-800 hover:text-brand-orange',
-            currentPath.startsWith('/services') || currentPath.includes('/car-servicing') || currentPath.includes('/air-conditioning') || currentPath.includes('/diagnostics') || currentPath.includes('/brake') || currentPath.includes('/clutch') || currentPath.includes('/cambelt') ? 'bg-slate-800 text-brand-orange' : 'text-slate-200'
-          ]}
-          aria-label="Services menu"
-          aria-expanded="false"
-        >
-          Services
-          <svg class="h-4 w-4 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
-          </svg>
-        </button>
-        <div id="mobile-services-menu" class="hidden pl-3 pt-1 space-y-1">
-          {serviceLinks.map((link) => (
-            <a
-              href={link.href}
-              class:list={[
-                'block rounded-lg px-3 py-2 text-sm transition hover:bg-slate-800 hover:text-brand-orange',
-                currentPath === link.href ? 'bg-slate-800 text-brand-orange font-semibold' : 'text-slate-300'
-              ]}
-            >
-              {link.label}
-            </a>
-          ))}
-        </div>
-      </div>
-
       <div class="flex flex-col gap-3 pt-4">
         <a
           href="tel:07394433889"
@@ -202,53 +145,5 @@ const whatsappUrl = `https://wa.me/447394433889?text=${encodeURIComponent(whatsa
     const isExpanded = mobileMenuButton.getAttribute('aria-expanded') === 'true';
     mobileMenuButton.setAttribute('aria-expanded', String(!isExpanded));
     mobileMenu?.classList.toggle('hidden');
-  });
-
-  // Mobile services accordion
-  const mobileServicesButton = document.getElementById('mobile-services-button');
-  const mobileServicesMenu = document.getElementById('mobile-services-menu');
-
-  mobileServicesButton?.addEventListener('click', () => {
-    const isExpanded = mobileServicesButton.getAttribute('aria-expanded') === 'true';
-    mobileServicesButton.setAttribute('aria-expanded', String(!isExpanded));
-    mobileServicesMenu?.classList.toggle('hidden');
-
-    // Rotate arrow icon
-    const arrow = mobileServicesButton.querySelector('svg');
-    arrow?.classList.toggle('rotate-180');
-  });
-
-  // Desktop services dropdown
-  const servicesDropdown = document.querySelector('.services-dropdown');
-  const servicesButton = servicesDropdown?.querySelector('button');
-  const servicesMenu = servicesDropdown?.querySelector('.services-menu');
-
-  let dropdownTimeout: ReturnType<typeof setTimeout> | null = null;
-
-  servicesDropdown?.addEventListener('mouseenter', () => {
-    if (dropdownTimeout) {
-      clearTimeout(dropdownTimeout);
-      dropdownTimeout = null;
-    }
-    servicesButton?.setAttribute('aria-expanded', 'true');
-    servicesMenu?.classList.remove('hidden');
-    servicesButton?.querySelector('svg')?.classList.add('rotate-180');
-  });
-
-  servicesDropdown?.addEventListener('mouseleave', () => {
-    dropdownTimeout = setTimeout(() => {
-      servicesButton?.setAttribute('aria-expanded', 'false');
-      servicesMenu?.classList.add('hidden');
-      servicesButton?.querySelector('svg')?.classList.remove('rotate-180');
-    }, 200);
-  });
-
-  // Click toggle for desktop dropdown (accessibility)
-  servicesButton?.addEventListener('click', (e) => {
-    e.preventDefault();
-    const isExpanded = servicesButton.getAttribute('aria-expanded') === 'true';
-    servicesButton.setAttribute('aria-expanded', String(!isExpanded));
-    servicesMenu?.classList.toggle('hidden');
-    servicesButton?.querySelector('svg')?.classList.toggle('rotate-180');
   });
 </script>
