@@ -3,15 +3,49 @@ const GA_MEASUREMENT_ID = import.meta.env.PUBLIC_GA_MEASUREMENT_ID;
 ---
 
 {GA_MEASUREMENT_ID && (
-  <>
-    <script async src={`https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`}></script>
-    <script is:inline define:vars={{ GA_MEASUREMENT_ID }}>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', GA_MEASUREMENT_ID, {
-        page_path: window.location.pathname,
+  <script is:inline define:vars={{ GA_MEASUREMENT_ID }}>
+    // Google Analytics - Only loads with cookie consent
+    (function() {
+      const COOKIE_CONSENT_KEY = 'a1-cookie-consent';
+
+      // Check if user has consented
+      function hasConsent() {
+        return localStorage.getItem(COOKIE_CONSENT_KEY) === 'accepted';
+      }
+
+      // Load Google Analytics
+      function loadGoogleAnalytics() {
+        // Load gtag script
+        const script = document.createElement('script');
+        script.async = true;
+        script.src = `https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`;
+        document.head.appendChild(script);
+
+        // Initialize gtag
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', GA_MEASUREMENT_ID, {
+          page_path: window.location.pathname,
+          anonymize_ip: true, // GDPR requirement
+        });
+
+        console.log('[Cookie Consent] Google Analytics loaded');
+      }
+
+      // Check consent on page load
+      if (hasConsent()) {
+        loadGoogleAnalytics();
+      } else {
+        console.log('[Cookie Consent] Google Analytics not loaded - no consent');
+      }
+
+      // Listen for consent changes
+      window.addEventListener('cookieConsentUpdated', function(event) {
+        if (event.detail.consent === 'accepted') {
+          loadGoogleAnalytics();
+        }
       });
-    </script>
-  </>
+    })();
+  </script>
 )}

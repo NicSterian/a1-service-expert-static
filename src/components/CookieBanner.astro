@@ -1,0 +1,134 @@
+---
+// Cookie consent banner component
+// GDPR compliant - shows on first visit, remembers choice in localStorage
+---
+
+<div
+  id="cookie-banner"
+  class="fixed bottom-0 left-0 right-0 z-50 hidden border-t-2 border-slate-700 bg-slate-900 text-white shadow-2xl"
+  role="dialog"
+  aria-labelledby="cookie-banner-title"
+  aria-describedby="cookie-banner-description"
+>
+  <div class="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
+    <div class="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
+      <div class="flex-1">
+        <h2 id="cookie-banner-title" class="text-lg font-semibold text-white">
+          🍪 We use cookies
+        </h2>
+        <p id="cookie-banner-description" class="mt-2 text-sm text-slate-300">
+          We use cookies to improve your experience on our site and to show you relevant content.
+          By clicking "Accept All", you consent to our use of cookies including Google Analytics.
+          <a href="/cookie-policy" class="font-medium text-brand-orange underline hover:text-orange-400">
+            Learn more
+          </a>
+        </p>
+      </div>
+      <div class="flex flex-col gap-3 sm:flex-row">
+        <button
+          id="cookie-decline"
+          class="rounded-full border-2 border-slate-600 bg-transparent px-6 py-2.5 text-sm font-semibold text-white transition hover:border-slate-500 hover:bg-slate-800"
+          aria-label="Decline cookies"
+        >
+          Decline
+        </button>
+        <button
+          id="cookie-accept"
+          class="rounded-full bg-brand-orange px-6 py-2.5 text-sm font-semibold text-white transition hover:bg-orange-500"
+          aria-label="Accept all cookies"
+        >
+          Accept All
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  // Cookie consent management
+  const COOKIE_CONSENT_KEY = 'a1-cookie-consent';
+  const COOKIE_CONSENT_TIMESTAMP_KEY = 'a1-cookie-consent-timestamp';
+  const CONSENT_EXPIRY_DAYS = 365;
+
+  // Check if consent has expired (365 days)
+  function hasConsentExpired(): boolean {
+    const timestamp = localStorage.getItem(COOKIE_CONSENT_TIMESTAMP_KEY);
+    if (!timestamp) return true;
+
+    const consentDate = new Date(parseInt(timestamp));
+    const expiryDate = new Date(consentDate.getTime() + CONSENT_EXPIRY_DAYS * 24 * 60 * 60 * 1000);
+    return new Date() > expiryDate;
+  }
+
+  // Get current consent status
+  function getConsent(): string | null {
+    if (hasConsentExpired()) {
+      localStorage.removeItem(COOKIE_CONSENT_KEY);
+      localStorage.removeItem(COOKIE_CONSENT_TIMESTAMP_KEY);
+      return null;
+    }
+    return localStorage.getItem(COOKIE_CONSENT_KEY);
+  }
+
+  // Save consent choice
+  function saveConsent(choice: 'accepted' | 'declined'): void {
+    localStorage.setItem(COOKIE_CONSENT_KEY, choice);
+    localStorage.setItem(COOKIE_CONSENT_TIMESTAMP_KEY, Date.now().toString());
+
+    // Dispatch event for Google Analytics to listen to
+    window.dispatchEvent(new CustomEvent('cookieConsentUpdated', { detail: { consent: choice } }));
+  }
+
+  // Show/hide banner
+  function showBanner(): void {
+    const banner = document.getElementById('cookie-banner');
+    if (banner) {
+      banner.classList.remove('hidden');
+    }
+  }
+
+  function hideBanner(): void {
+    const banner = document.getElementById('cookie-banner');
+    if (banner) {
+      banner.classList.add('hidden');
+    }
+  }
+
+  // Initialize on page load
+  document.addEventListener('DOMContentLoaded', () => {
+    const consent = getConsent();
+
+    // Show banner if no consent or expired
+    if (!consent) {
+      showBanner();
+    }
+
+    // Accept button handler
+    const acceptButton = document.getElementById('cookie-accept');
+    acceptButton?.addEventListener('click', () => {
+      saveConsent('accepted');
+      hideBanner();
+      // Reload to activate Google Analytics
+      window.location.reload();
+    });
+
+    // Decline button handler
+    const declineButton = document.getElementById('cookie-decline');
+    declineButton?.addEventListener('click', () => {
+      saveConsent('declined');
+      hideBanner();
+    });
+  });
+
+  // Expose function globally for footer "Cookie Settings" link
+  (window as any).openCookieSettings = function() {
+    localStorage.removeItem(COOKIE_CONSENT_KEY);
+    localStorage.removeItem(COOKIE_CONSENT_TIMESTAMP_KEY);
+    showBanner();
+  };
+
+  // Expose function to check consent (for Google Analytics)
+  (window as any).hasAnalyticsConsent = function(): boolean {
+    return getConsent() === 'accepted';
+  };
+</script>
