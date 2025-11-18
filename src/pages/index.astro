@@ -68,27 +68,27 @@ const whyChooseUs = [
   title="A1 Service Expert | Car Servicing & Repairs Kettering | Independent Garage"
   description="Expert car servicing, diagnostics, and repairs in Kettering, Northamptonshire. Independent garage with dealer-level expertise. Call 07394 433889 for professional service."
 >
-  <div class="space-y-16">
+  <div class="space-y-20 md:space-y-24">
     <!-- Hero Section -->
     <section
-      class="relative overflow-hidden rounded-3xl border-2 border-brand-orange/30 text-white shadow-xl"
+      class="relative overflow-hidden rounded-3xl border-2 border-brand-orange/40 text-white shadow-2xl"
       style="background-image: url(/images/home-hero.svg); background-size: cover; background-position: center;"
     >
       <div class="absolute inset-0 bg-gradient-to-br from-slate-900/90 to-slate-950/85"></div>
-      <div class="relative grid gap-10 p-8 sm:grid-cols-[1.1fr_0.9fr] sm:p-14">
-        <div class="space-y-6">
-          <p class="text-sm font-semibold uppercase tracking-[0.35em] text-brand-orange">Independent Specialists</p>
+      <div class="relative grid gap-10 p-8 sm:grid-cols-[1.1fr_0.9fr] sm:p-16 lg:p-20">
+        <div class="space-y-6 md:space-y-8">
+          <p class="animate-fade-in text-sm font-semibold uppercase tracking-[0.35em] text-brand-orange-light">Independent Specialists</p>
 
-          <h1 class="text-4xl font-semibold leading-tight sm:text-5xl">
+          <h1 class="animate-fade-in-up text-4xl font-bold leading-tight text-shadow-lg sm:text-5xl lg:text-6xl">
             Expert Car Servicing & Repairs in Kettering
           </h1>
-          <p class="max-w-xl text-base text-slate-200">
+          <p class="max-w-xl text-base leading-relaxed text-slate-200 md:text-lg">
             A1 Service Expert offers dealer-level diagnostics and servicing at independent garage prices. Our experienced technicians provide honest advice, transparent quotes, and quality workmanship for all makes and models in Kettering and Northamptonshire.
           </p>
-          <div class="flex flex-col gap-3 sm:flex-row">
+          <div class="flex flex-col gap-4 pt-2 sm:flex-row">
             <a
               href="tel:07394433889"
-              class="inline-flex items-center justify-center gap-2 rounded bg-brand-orange px-6 py-3 text-sm font-semibold text-slate-900 transition hover:-translate-y-0.5 hover:bg-orange-400"
+              class="btn-primary group"
             >
               <svg viewBox="0 0 24 24" class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="2">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M3 5a2 2 0 0 1 2-2h2.28a2 2 0 0 1 1.94 1.515l.74 2.964a2 2 0 0 1-.97 2.26l-1.21.726a11 11 0 0 0 5.1 5.1l.73-1.21a2 2 0 0 1 2.26-.97l2.96.74A2 2 0 0 1 21 18.72V21a2 2 0 0 1-2 2h-1c-8.284 0-15-6.716-15-15V5Z" />
@@ -99,7 +99,7 @@ const whyChooseUs = [
               href="https://wa.me/447394433889"
               target="_blank"
               rel="noreferrer"
-              class="inline-flex items-center justify-center gap-2 rounded border border-white/40 px-6 py-3 text-sm font-semibold text-white transition hover:-translate-y-0.5 hover:bg-white/10"
+              class="btn-outline-white group"
             >
               <svg viewBox="0 0 24 24" class="h-4 w-4" fill="currentColor">
                 <path d="M20.52 3.48A11.94 11.94 0 0 0 12.06 0C5.47 0 .1 5.37.1 12c0 2.12.56 4.14 1.62 5.94L0 24l6.2-1.6A11.86 11.86 0 0 0 12.06 24c6.58 0 11.94-5.37 11.94-12 0-3.2-1.25-6.2-3.48-8.52Zm-8.46 18.5c-1.86 0-3.63-.5-5.2-1.47l-.37-.22-3.68.95.98-3.58-.24-.37A9.65 9.65 0 0 1 2.3 12c0-5.38 4.38-9.76 9.76-9.76 2.6 0 5.06 1 6.9 2.83a9.66 9.66 0 0 1 2.86 6.93c0 5.38-4.38 9.76-9.76 9.76Zm5.63-7.3c-.3-.15-1.78-.88-2.06-.98-.28-.1-.49-.15-.7.15-.2.3-.8.98-.98 1.18-.2.2-.36.23-.66.08-.3-.15-1.25-.46-2.38-1.46-.88-.78-1.48-1.74-1.66-2.04-.18-.3 0-.47.14-.62.14-.14.3-.36.46-.54.15-.18.2-.3.3-.5.1-.2.05-.38-.03-.54-.08-.15-.7-1.68-.96-2.3-.25-.6-.5-.5-.7-.51h-.6c-.2 0-.54.07-.82.38-.28.3-1.08 1.06-1.08 2.58 0 1.5 1.1 2.94 1.26 3.14.15.2 2.12 3.24 5.14 4.54.72.3 1.28.48 1.72.62.72.23 1.38.2 1.9.12.58-.08 1.78-.72 2.03-1.4.26-.7.26-1.3.2-1.4-.08-.12-.28-.2-.58-.35Z"/>
@@ -107,31 +107,31 @@ const whyChooseUs = [
               WhatsApp Us
             </a>
           </div>
-          <div class="grid gap-4 sm:grid-cols-3">
-            {heroHighlights.map((item) => (
-              <div class="rounded-2xl border border-white/10 bg-white/5 p-4 backdrop-blur">
-                <h3 class="text-sm font-semibold text-white">{item.title}</h3>
-                <p class="mt-1 text-xs text-slate-200">{item.description}</p>
+          <div class="grid gap-4 pt-2 sm:grid-cols-3">
+            {heroHighlights.map((item, index) => (
+              <div class={`glass-card p-5 card-hover reveal-delay-${index + 1}`}>
+                <h3 class="text-base font-bold text-white">{item.title}</h3>
+                <p class="mt-2 text-xs leading-relaxed text-slate-200">{item.description}</p>
               </div>
             ))}
           </div>
         </div>
-        <div class="relative flex min-h-[260px] items-center justify-center">
-          <div class="h-full w-full rounded-3xl border border-white/10 bg-gradient-to-br from-orange-500/20 to-orange-300/40 p-6 shadow-2xl backdrop-blur">
-            <div class="flex h-full flex-col justify-between space-y-4">
+        <div class="relative flex min-h-[300px] items-center justify-center">
+          <div class="glass-card-strong h-full w-full p-7 lg:p-8">
+            <div class="flex h-full flex-col justify-between space-y-5">
               <div>
-                <p class="text-xs font-semibold uppercase tracking-[0.4em] text-white/80">Popular Services</p>
-                <h2 class="mt-2 text-2xl font-semibold text-white">Four essentials every driver needs</h2>
+                <p class="text-xs font-bold uppercase tracking-[0.4em] text-brand-orange-light">Popular Services</p>
+                <h2 class="mt-3 text-2xl font-bold text-white lg:text-3xl">Four essentials every driver needs</h2>
               </div>
               <div class="grid gap-3 sm:grid-cols-2">
                 {showcaseServices.map((service) => (
                   <a
                     href={service.href}
-                    class="group flex items-start gap-3 rounded-2xl border border-white/10 bg-white/10 p-3 text-left text-sm transition-transform duration-200 hover:-translate-y-1 hover:border-white/40 hover:bg-white/20"
+                    class="group flex items-start gap-3 rounded-2xl border border-white/20 bg-white/10 p-4 text-left text-sm transition-all duration-300 hover:-translate-y-2 hover:border-brand-orange-light/50 hover:bg-white/20 hover:shadow-lg"
                   >
                     <span class="block">
-                      <span class="block font-semibold text-white">{service.title}</span>
-                      <span class="text-xs text-white/80">{service.blurb}</span>
+                      <span class="block font-bold text-white group-hover:text-brand-orange-light transition-colors">{service.title}</span>
+                      <span class="mt-1 text-xs leading-relaxed text-white/90">{service.blurb}</span>
                     </span>
                   </a>
                 ))}
@@ -147,33 +147,36 @@ const whyChooseUs = [
 
     <!-- Services Overview Section -->
     <section
-      class="relative overflow-hidden rounded-3xl border border-slate-200 bg-white shadow-sm"
+      class="bg-grid relative overflow-hidden rounded-3xl border-2 border-slate-200 bg-white shadow-xl"
       style="background-image: url(/images/services-feature.png); background-size: cover; background-position: center;"
     >
-      <div class="absolute inset-0 bg-slate-950/65 backdrop-blur-sm"></div>
-      <div class="relative space-y-8 p-8 sm:p-12">
-        <div class="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
-          <div>
-            <p class="text-sm font-semibold uppercase tracking-widest text-brand-orange">Comprehensive Coverage</p>
-            <h2 class="text-3xl font-semibold text-white">Every System, Under One Roof</h2>
+      <div class="absolute inset-0 bg-slate-950/70 backdrop-blur-sm"></div>
+      <div class="relative space-y-10 p-8 sm:p-14 lg:p-16">
+        <div class="flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between">
+          <div class="space-y-3">
+            <p class="text-sm font-bold uppercase tracking-widest text-brand-orange-light">Comprehensive Coverage</p>
+            <h2 class="text-3xl font-bold text-white text-shadow-lg lg:text-4xl">Every System, Under One Roof</h2>
           </div>
-          <a href="/services" class="text-sm font-semibold text-brand-orange transition hover:-translate-y-0.5 hover:underline">
-            View All Services →
+          <a href="/services" class="group inline-flex items-center gap-2 text-sm font-bold text-brand-orange-light transition-all hover:gap-3 hover:text-brand-orange">
+            View All Services
+            <svg class="h-5 w-5 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+            </svg>
           </a>
         </div>
-        <div class="grid gap-6 md:grid-cols-2">
+        <div class="grid gap-6 md:grid-cols-2 lg:gap-8">
           {showcaseServices.map((item) => (
             <a
               href={item.href}
-              class="group flex items-start gap-4 rounded-2xl border border-slate-200 bg-white/95 p-6 shadow-sm transition-transform duration-200 hover:-translate-y-1.5 hover:shadow-xl"
+              class="card-hover group flex items-start gap-4 rounded-2xl border-2 border-slate-200/80 bg-white/98 p-7 shadow-lg backdrop-blur-sm"
             >
               <span class="block">
-                <h3 class="text-xl font-semibold text-brand-black">{item.title}</h3>
-                <p class="mt-2 text-sm text-slate-600">{item.blurb}</p>
-                <span class="mt-4 inline-flex items-center text-sm font-semibold text-brand-orange">
+                <h3 class="text-xl font-bold text-brand-black group-hover:text-brand-orange transition-colors lg:text-2xl">{item.title}</h3>
+                <p class="mt-3 text-sm leading-relaxed text-slate-600 lg:text-base">{item.blurb}</p>
+                <span class="mt-5 inline-flex items-center gap-2 text-sm font-bold text-brand-orange transition-all group-hover:gap-3">
                   Learn more
-                  <svg class="ml-2 h-4 w-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14m-6-6 6 6-6 6" />
+                  <svg class="h-4 w-4 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
                   </svg>
                 </span>
               </span>
@@ -184,45 +187,45 @@ const whyChooseUs = [
     </section>
 
     <!-- Extended Services Section -->
-    <section class="relative overflow-hidden rounded-3xl bg-slate-900 text-white shadow-xl">
-      <div class="relative grid gap-10 p-8 lg:grid-cols-[1.1fr_0.9fr] lg:p-14">
-        <div class="space-y-4">
-          <h2 class="text-3xl font-semibold">More Ways We Keep You Moving</h2>
-          <p class="max-w-2xl text-sm text-slate-200">
+    <section class="bg-dots relative overflow-hidden rounded-3xl bg-slate-900 text-white shadow-2xl">
+      <div class="relative grid gap-12 p-8 lg:grid-cols-[1.1fr_0.9fr] lg:p-16">
+        <div class="space-y-6">
+          <h2 class="text-3xl font-bold lg:text-4xl">More Ways We Keep You Moving</h2>
+          <p class="max-w-2xl text-base leading-relaxed text-slate-200">
             From routine maintenance to complex repairs, our Kettering workshop handles every aspect of vehicle care with precision and expertise.
           </p>
-          <ul class="grid gap-2 text-sm text-slate-200 md:grid-cols-2">
+          <ul class="grid gap-3 pt-2 text-sm text-slate-200 md:grid-cols-2 lg:text-base">
             {extendedServices.map((item) => (
-              <li class="flex items-start gap-2">
-                <span class="mt-1 inline-flex h-5 w-5 items-center justify-center rounded-full bg-brand-orange/90 text-xs text-white">
-                  <svg viewBox="0 0 20 20" class="h-3.5 w-3.5" fill="none" stroke="currentColor" stroke-width="2">
+              <li class="flex items-start gap-3 transition-transform hover:translate-x-1">
+                <span class="mt-1 inline-flex h-6 w-6 flex-shrink-0 items-center justify-center rounded-full bg-accent-green/90 text-xs text-white shadow-lg">
+                  <svg viewBox="0 0 20 20" class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="2.5">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M6 10l3 3 5-6" />
                   </svg>
                 </span>
-                <span>{item}</span>
+                <span class="leading-relaxed">{item}</span>
               </li>
             ))}
           </ul>
         </div>
-        <div class="flex flex-col justify-center gap-4">
-          <div class="rounded-3xl border border-white/30 bg-white/10 p-6 backdrop-blur">
-            <h3 class="text-lg font-semibold text-white">Why Choose A1 Service Expert?</h3>
-            <ul class="mt-3 space-y-2 text-sm text-slate-200">
+        <div class="flex flex-col justify-center gap-5">
+          <div class="glass-card-strong p-7">
+            <h3 class="text-xl font-bold text-white">Why Choose A1 Service Expert?</h3>
+            <ul class="mt-5 space-y-3 text-sm text-slate-200 lg:text-base">
               {whyChooseUs.map((point) => (
-                <li class="flex items-start gap-2">
-                  <span class="mt-1 inline-flex h-5 w-5 items-center justify-center rounded-full bg-brand-orange/90 text-xs text-white">
-                    <svg viewBox="0 0 20 20" class="h-3.5 w-3.5" fill="none" stroke="currentColor" stroke-width="2">
+                <li class="flex items-start gap-3">
+                  <span class="mt-1 inline-flex h-6 w-6 flex-shrink-0 items-center justify-center rounded-full bg-brand-orange/90 text-xs text-white shadow-lg">
+                    <svg viewBox="0 0 20 20" class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="2.5">
                       <path stroke-linecap="round" stroke-linejoin="round" d="M6 10l3 3 5-6" />
                     </svg>
                   </span>
-                  <span>{point}</span>
+                  <span class="leading-relaxed">{point}</span>
                 </li>
               ))}
             </ul>
           </div>
           <a
             href="/contact"
-            class="inline-flex items-center justify-center rounded-full bg-brand-orange px-6 py-3 text-sm font-semibold text-slate-900 transition hover:-translate-y-0.5 hover:bg-orange-400"
+            class="btn-primary"
           >
             Get a Quote
           </a>
@@ -235,15 +238,15 @@ const whyChooseUs = [
 
     <!-- Reviews Section -->
     <section
-      class="relative overflow-hidden rounded-3xl text-white shadow-xl"
+      class="relative overflow-hidden rounded-3xl text-white shadow-2xl"
       style="background-image: url(/images/reviews-background.svg); background-size: cover; background-position: center;"
     >
-      <div class="absolute inset-0 bg-slate-950/80"></div>
-      <div class="relative flex flex-col gap-6 p-8 sm:flex-row sm:items-center sm:justify-between sm:p-14">
-        <div class="space-y-3">
-          <p class="text-sm font-semibold uppercase tracking-[0.4em] text-brand-orange">Customer Reviews</p>
-          <h2 class="text-3xl font-semibold">See What Our Kettering Customers Say</h2>
-          <p class="max-w-2xl text-sm text-slate-200">
+      <div class="absolute inset-0 bg-gradient-to-br from-slate-950/85 to-slate-900/90"></div>
+      <div class="relative flex flex-col gap-8 p-8 sm:flex-row sm:items-center sm:justify-between sm:p-16 lg:gap-12">
+        <div class="space-y-4">
+          <p class="text-sm font-bold uppercase tracking-[0.4em] text-brand-orange-light">Customer Reviews</p>
+          <h2 class="text-3xl font-bold text-shadow-lg lg:text-4xl">See What Our Kettering Customers Say</h2>
+          <p class="max-w-2xl text-base leading-relaxed text-slate-200">
             We're proud of the trust our customers place in us. Visit our Google profile to read genuine reviews from satisfied motorists across Northamptonshire.
           </p>
         </div>
@@ -251,7 +254,7 @@ const whyChooseUs = [
           href="https://www.google.com/search?sca_esv=1bab67044c4ee1f2&sxsrf=AE3TifNQJ9vQq8szdZWm4u6szzNuoRfBNw:1763424409943&si=AMgyJEtREmoPL4P1I5IDCfuA8gybfVI2d5Uj7QMwYCZHKDZ-E6Cc0JZFW8GvDJqoDKvNJqaN45uQIr6pXmsJ9i_v_Bj762C2XjqtI82x2tjEYLmOrUPV-dU1NnCjVuVeHyAV9ekeYAW_7vSNn9DYMOy4YkTxxIK5Yw%3D%3D&q=A1+Service+Expert+Reviews&sa=X&ved=2ahUKEwid3qvss_qQAxUzQkEAHegGBWkQ0bkNegQIHhAE&cshid=1763424416955123&biw=1470&bih=737&dpr=2"
           target="_blank"
           rel="noreferrer"
-          class="inline-flex items-center gap-3 self-start rounded-full bg-brand-orange px-5 py-3 text-sm font-semibold text-slate-900 transition hover:-translate-y-0.5 hover:bg-orange-500"
+          class="btn-primary flex-shrink-0"
         >
           <svg viewBox="0 0 48 48" class="h-6 w-6" aria-hidden>
             <path fill="#EA4335" d="M24 9.5c3.28 0 6.23 1.15 8.55 3.05l6.37-6.37C34.36 2.45 29.48 0 24 0 14.62 0 6.53 5.35 2.56 13.09l7.4 5.75C12.04 13.18 17.64 9.5 24 9.5Z" />
@@ -268,35 +271,35 @@ const whyChooseUs = [
     <WorkshopGallery />
 
     <!-- Contact Section -->
-    <section class="space-y-8 rounded-3xl border border-slate-700 bg-slate-900 p-8 shadow-inner sm:p-12">
-      <div class="space-y-3">
-        <p class="text-sm font-semibold uppercase tracking-[0.4em] text-orange-400">Get in Touch</p>
-        <h2 class="text-3xl font-semibold text-white">Visit Our Kettering Workshop</h2>
+    <section class="bg-grid space-y-10 rounded-3xl border-2 border-slate-700 bg-slate-900 p-8 shadow-2xl sm:p-14 lg:p-16">
+      <div class="space-y-4">
+        <p class="text-sm font-bold uppercase tracking-[0.4em] text-brand-orange-light">Get in Touch</p>
+        <h2 class="text-3xl font-bold text-white lg:text-4xl">Visit Our Kettering Workshop</h2>
       </div>
-      <div class="grid gap-8 lg:grid-cols-[1.1fr_0.9fr]">
+      <div class="grid gap-10 lg:grid-cols-[1.1fr_0.9fr] lg:gap-12">
         <div class="space-y-6">
-          <div class="flex items-start gap-4 rounded-2xl border border-slate-700 bg-slate-800 p-5 shadow-lg">
-            <span class="mt-1 flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-full bg-orange-500/10 text-orange-500">
-              <svg viewBox="0 0 24 24" class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="2">
+          <div class="card-hover flex items-start gap-5 rounded-2xl border-2 border-slate-700 bg-slate-800 p-6 shadow-lg">
+            <span class="mt-1 flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full bg-brand-orange/20 text-brand-orange shadow-lg">
+              <svg viewBox="0 0 24 24" class="h-6 w-6" fill="none" stroke="currentColor" stroke-width="2">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M12 21s-6-5.686-6-10A6 6 0 0 1 18 11c0 4.314-6 10-6 10Zm0-9a2 2 0 1 0 0-4 2 2 0 0 0 0 4Z" />
               </svg>
             </span>
-            <div class="space-y-1">
-              <p class="text-sm font-semibold text-white">Workshop Address</p>
-              <p class="text-sm text-slate-400">11 Cunliffe Dr, Kettering NN16 8LD</p>
+            <div class="space-y-2">
+              <p class="text-base font-bold text-white">Workshop Address</p>
+              <p class="text-sm text-slate-400 lg:text-base">11 Cunliffe Dr, Kettering NN16 8LD</p>
             </div>
           </div>
 
-          <div class="flex flex-col gap-3 rounded-2xl border border-slate-700 bg-slate-800 p-5 shadow-lg">
-            <div class="flex items-center gap-4">
-              <span class="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-full bg-orange-500/10 text-orange-500">
-                <svg viewBox="0 0 24 24" class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="2">
+          <div class="card-hover flex flex-col gap-5 rounded-2xl border-2 border-slate-700 bg-slate-800 p-6 shadow-lg">
+            <div class="flex items-center gap-5">
+              <span class="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full bg-brand-orange/20 text-brand-orange shadow-lg">
+                <svg viewBox="0 0 24 24" class="h-6 w-6" fill="none" stroke="currentColor" stroke-width="2">
                   <path stroke-linecap="round" stroke-linejoin="round" d="M3 5a2 2 0 0 1 2-2h2.28a2 2 0 0 1 1.94 1.515l.74 2.964a2 2 0 0 1-.97 2.26l-1.21.726a11 11 0 0 0 5.1 5.1l.73-1.21a2 2 0 0 1 2.26-.97l2.96.74A2 2 0 0 1 21 18.72V21a2 2 0 0 1-2 2h-1c-8.284 0-15-6.716-15-15V5Z" />
                 </svg>
               </span>
-              <p class="text-sm font-semibold text-white">Contact Us</p>
+              <p class="text-base font-bold text-white">Contact Us</p>
             </div>
-            <div class="flex flex-col gap-2">
+            <div class="flex flex-col gap-3">
               <a href="tel:07394433889" class="btn-primary">
                 Call 07394 433889
               </a>
@@ -316,14 +319,14 @@ const whyChooseUs = [
         </div>
 
         <div class="space-y-6">
-          <div class="space-y-4 rounded-2xl border border-slate-700 bg-slate-800 p-6 shadow-lg">
-            <p class="text-base font-semibold text-white">Need Expert Advice?</p>
-            <p class="text-sm leading-relaxed text-slate-400">
+          <div class="card-hover space-y-5 rounded-2xl border-2 border-slate-700 bg-slate-800 p-7 shadow-lg">
+            <p class="text-lg font-bold text-white">Need Expert Advice?</p>
+            <p class="text-sm leading-relaxed text-slate-400 lg:text-base">
               Whether you need a routine service, diagnostic check, or complex repair, our team is ready to help. Call us today or visit our workshop in Kettering for honest advice and transparent quotes.
             </p>
             <a
               href="/contact"
-              class="btn-secondary inline-flex w-full"
+              class="btn-secondary inline-flex w-full justify-center"
             >
               Contact Form
             </a>
