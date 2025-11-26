@@ -38,10 +38,6 @@ exports.handler = async (event) => {
         user: process.env.EMAIL_USER, // Your Microsoft 365 email (e.g., support@a1serviceexpert.com)
         pass: process.env.EMAIL_PASSWORD, // Your email password or app-specific password
       },
-      tls: {
-        ciphers: 'SSLv3',
-        rejectUnauthorized: false,
-      },
     });
 
     // Email to send to the customer (auto-reply confirmation)
