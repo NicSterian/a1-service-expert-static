@@ -16,14 +16,16 @@ exports.handler = async (event) => {
     console.log('📦 Event body:', event.body);
 
     // Parse the form submission data from Netlify
-    const payload = JSON.parse(event.body);
-    console.log('📋 Parsed payload:', JSON.stringify(payload, null, 2));
+    const body = JSON.parse(event.body);
+    console.log('📋 Parsed payload:', JSON.stringify(body, null, 2));
 
-    // Netlify Forms sends data in payload.data
-    const formData = payload.data;
+    // Netlify Forms sends data in a nested structure: body.payload.data
+    const formData = body.payload?.data;
 
     if (!formData) {
-      console.error('❌ No form data found in payload:', payload);
+      console.error('❌ No form data found in payload.');
+      console.error('Expected: body.payload.data');
+      console.error('Received structure:', JSON.stringify(body, null, 2));
       return { statusCode: 400, body: 'No form data received' };
     }
 
