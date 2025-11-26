@@ -11,9 +11,23 @@ exports.handler = async (event) => {
   }
 
   try {
+    // Log the entire event for debugging
+    console.log('📥 Received event:', JSON.stringify(event, null, 2));
+    console.log('📦 Event body:', event.body);
+
     // Parse the form submission data from Netlify
     const payload = JSON.parse(event.body);
+    console.log('📋 Parsed payload:', JSON.stringify(payload, null, 2));
+
+    // Netlify Forms sends data in payload.data
     const formData = payload.data;
+
+    if (!formData) {
+      console.error('❌ No form data found in payload:', payload);
+      return { statusCode: 400, body: 'No form data received' };
+    }
+
+    console.log('📝 Form data:', formData);
 
     // Extract customer information from the form
     const customerName = formData.name || 'Customer';
@@ -24,9 +38,11 @@ exports.handler = async (event) => {
 
     // Validate required fields
     if (!customerEmail || !customerName) {
-      console.error('Missing required fields: email or name');
+      console.error('❌ Missing required fields. Name:', customerName, 'Email:', customerEmail);
       return { statusCode: 400, body: 'Missing required fields' };
     }
+
+    console.log('✅ All required fields present. Preparing to send email to:', customerEmail);
 
     // Configure Microsoft 365 SMTP transporter
     // These environment variables need to be set in Netlify dashboard
@@ -148,9 +164,15 @@ Website: https://a1serviceexpert.com
     };
 
     // Send the confirmation email to the customer
-    await transporter.sendMail(customerEmailContent);
+    console.log('📧 Attempting to send email via Microsoft 365 SMTP...');
+    console.log('📧 SMTP Config - Host: smtp.office365.com, Port: 587');
+    console.log('📧 From:', process.env.EMAIL_USER);
+    console.log('📧 To:', customerEmail);
 
-    console.log(`✅ Confirmation email sent to ${customerEmail}`);
+    const result = await transporter.sendMail(customerEmailContent);
+
+    console.log('✅ Confirmation email sent successfully to', customerEmail);
+    console.log('📬 Email result:', JSON.stringify(result, null, 2));
 
     return {
       statusCode: 200,
@@ -158,13 +180,29 @@ Website: https://a1serviceexpert.com
     };
   } catch (error) {
     console.error('❌ Error sending email:', error);
+    console.error('❌ Error name:', error.name);
+    console.error('❌ Error message:', error.message);
+    console.error('❌ Error stack:', error.stack);
 
-    // Return success even if email fails - don't break the form submission
-    // The customer will still receive confirmation via Netlify's built-in notification
+    if (error.code) {
+      console.error('❌ Error code:', error.code);
+    }
+
+    if (error.command) {
+      console.error('❌ SMTP command:', error.command);
+    }
+
+    if (error.response) {
+      console.error('❌ SMTP response:', error.response);
+    }
+
+    // Return error status so we can see failures in Netlify function logs
     return {
-      statusCode: 200,
+      statusCode: 500,
       body: JSON.stringify({
-        message: 'Form submitted successfully (email notification pending)'
+        message: 'Error sending confirmation email',
+        error: error.message,
+        details: process.env.NODE_ENV === 'development' ? error.stack : undefined
       }),
     };
   }
